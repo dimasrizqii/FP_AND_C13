@@ -46,8 +46,6 @@
                         android:id="@+id/profile_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:civ_border_color="@color/black"
-                        app:civ_border_width="1dp"
                         tools:src="@tools:sample/avatars" />
 
                 </androidx.cardview.widget.CardView>
