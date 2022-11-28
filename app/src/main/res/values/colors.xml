@@ -18,4 +18,11 @@
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
+
+
+    <color name="cardColor">#D2EDF0</color>
+    <color name="hintTextColor">#D2F4F8</color>
+    <color name="textInputOutlineColor">#6ff9ff</color>
+    <color name="text">#143539</color>
+    <color name="login">#708E9394</color>
 </resources>
