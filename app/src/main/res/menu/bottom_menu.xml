@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/firstFragment"
+        android:title="@string/menu_dashboard"
+        android:contentDescription="@string/menu_dashboard"
+        android:icon="@drawable/ic_dashboard_white_24dp"/>
+
+    <item
+        android:id="@+id/ticketFragment"
+        android:title="@string/menu_Ticket"
+        android:contentDescription="Ticket"
+        android:icon="@drawable/ic_baseline_airplane_ticket_24"/>
+
+    <item
+        android:id="@+id/historyFragment"
+        android:title="@string/menu_history"
+        android:contentDescription="History"
+        android:icon="@drawable/ic_baseline_history_24"/>
+
+    <item
+        android:id="@+id/profileFragment"
+        android:title="@string/menu_profile"
+        android:contentDescription="@string/menu_profile"
+        android:icon="@drawable/ic_person_outline_white_24dp"/>
+
+
+</menu>

@@ -1,5 +1,6 @@
 package com.example.fpandc13.ui.login
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.FragmentLoginBinding
+import com.example.fpandc13.ui.activity.HomeActivity
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 
@@ -30,6 +32,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         openregister()
+        go()
     }
 
     private fun openregister() {
@@ -37,4 +40,15 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
+
+    private fun go(){
+        binding.loginbtn.setOnClickListener(){
+            activity?.let {
+                val intent = Intent(it, HomeActivity::class.java)
+                it.startActivity(intent)}
+        }
+
+    }
+
+
 }

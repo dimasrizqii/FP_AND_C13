@@ -1,10 +1,8 @@
-package com.example.fpandc13.ui.main
+package com.example.fpandc13.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
 import com.example.fpandc13.R
-import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
 
