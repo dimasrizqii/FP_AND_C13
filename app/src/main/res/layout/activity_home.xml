@@ -7,6 +7,9 @@
     android:background="@color/white"
     tools:context=".ui.activity.HomeActivity">
 
+<!--<ScrollView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent">-->
 
     <fragment
         android:id="@+id/main_fragment"
@@ -21,6 +24,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:navGraph='@navigation/home_nav' />
+
+<!--</ScrollView>-->
+
+
+
 
     <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/bottomBar"
