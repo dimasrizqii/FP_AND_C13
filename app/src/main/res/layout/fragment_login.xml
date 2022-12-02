@@ -6,7 +6,6 @@
     tools:context="ui.login.LoginFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="443dp"
@@ -33,7 +32,7 @@
 
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/email"
+            android:id="@+id/et_email_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
@@ -52,7 +51,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/password"
+            android:id="@+id/et_password_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -68,12 +67,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.463"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/email"
+            app:layout_constraintTop_toTopOf="@id/et_email_login"
             app:layout_constraintVertical_bias="0.1"
             app:layout_constraintWidth_percent=".8" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/loginbtn"
+            android:id="@+id/btn_login"
             android:layout_width="322dp"
             android:layout_height="55dp"
             android:background="@drawable/login_button_bk"
@@ -84,7 +83,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password_login"
             app:layout_constraintVertical_bias="0.345" />
 
         <TextView
@@ -97,11 +96,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.866"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password_login"
             app:layout_constraintVertical_bias="0.037" />
 
         <TextView
-            android:id="@+id/newAccount"
+            android:id="@+id/tv_create_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create Account"
@@ -110,7 +109,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginbtn"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login"
             app:layout_constraintVertical_bias="0.09" />
 
         <TextView
@@ -118,9 +117,9 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:textColor="@color/primaryTextColor"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintBottom_toTopOf="@+id/et_email_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -138,7 +137,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginbtn"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login"
             app:layout_constraintVertical_bias="1.0" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -153,14 +152,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.163"
             app:layout_constraintStart_toEndOf="@+id/fab_google"
-            app:layout_constraintTop_toBottomOf="@+id/newAccount"
+            app:layout_constraintTop_toBottomOf="@+id/tv_create_account"
             app:layout_constraintVertical_bias="1.0" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_twitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginBottom="36dp"
             android:backgroundTint="@color/white"
             android:elevation="35dp"
@@ -169,7 +167,7 @@
             app:layout_constraintEnd_toStartOf="@+id/fab_google"
             app:layout_constraintHorizontal_bias="0.834"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginbtn"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -193,7 +191,7 @@
         android:layout_height="wrap_content"
         android:text="Welcome to, Aeroplane"
         android:textColor="@color/white"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:flow_firstVerticalBias="0.2"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
