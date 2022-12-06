@@ -21,4 +21,12 @@
     <string name="menu_Ticket">Ticket</string>
     <string name="menu_history">History</string>
     <string name="menu_profile">Profile</string>
+
+    <string name="dropdown">dropDownMenuClass</string>
+    <string-array name="Class">
+        <item>First Class</item>
+        <item>Bussiness Class</item>
+        <item>Economic Class</item>
+        <item>All Class</item>
+    </string-array>
 </resources>
