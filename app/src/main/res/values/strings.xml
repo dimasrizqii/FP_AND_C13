@@ -22,11 +22,18 @@
     <string name="menu_history">History</string>
     <string name="menu_profile">Profile</string>
 
-    <string name="dropdown">dropDownMenuClass</string>
-    <string-array name="Class">
-        <item>First Class</item>
-        <item>Bussiness Class</item>
-        <item>Economic Class</item>
-        <item>All Class</item>
+    <string name="ArrivalSpinner">SpinnerArrival</string>
+    <string-array name="Arrival">
+        <item>Surabaya (SBy)</item>
+        <item>Jakarta (JKt)</item>
+        <item>Bandung (BDg)</item>
+        <item>Papua (PPu)</item>
+    </string-array>
+
+    <string-array name="Departure">
+        <item>Surabaya (SBy)</item>
+        <item>Jakarta (JKt)</item>
+        <item>Bandung (BDg)</item>
+        <item>Papua (PPu)</item>
     </string-array>
 </resources>

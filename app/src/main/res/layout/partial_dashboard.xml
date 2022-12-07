@@ -6,11 +6,10 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/primarytoolbarColor"
-        android:background="@drawable/background_oval"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:background="@drawable/login_button_bk"
         android:src="@drawable/ic_transfer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,11 +26,10 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="64dp"
-        android:backgroundTint="@color/primarytoolbarColor"
-        android:background="@drawable/background_oval"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/login_button_bk"
         android:src="@drawable/ic_debit"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,18 +39,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/primaryTextColor"
-        android:text="m-Payment"
+        android:text="Top-Up"
         app:layout_constraintEnd_toEndOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="@+id/imageButton2"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="64dp"
-        android:background="@drawable/background_oval"
-        android:backgroundTint="@color/primarytoolbarColor"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/login_button_bk"
         android:src="@drawable/ic_cart"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="e-Commerce"
+        android:text="Cart"
         android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="@+id/imageButton3"
         app:layout_constraintStart_toStartOf="@+id/imageButton3"
@@ -69,12 +66,11 @@
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="64dp"
-        android:background="@drawable/background_oval"
-        android:backgroundTint="@color/primarytoolbarColor"
-        android:src="@drawable/ic_flazz"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/login_button_bk"
+        android:src="@drawable/ic_baseline_airplane_ticket_24"
         app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,9 +78,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Flazz"
+        android:text="Refund"
         android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="@+id/imageButton4"
         app:layout_constraintStart_toStartOf="@+id/imageButton4"
         app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/login_button_bk"
+        android:src="@drawable/ic_baseline_history_24"
+        app:layout_constraintStart_toEndOf="@+id/imageButton4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="History"
+        android:textColor="@color/primaryTextColor"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton5"
+        app:layout_constraintStart_toStartOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
