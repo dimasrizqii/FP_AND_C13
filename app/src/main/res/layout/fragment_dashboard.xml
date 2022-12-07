@@ -9,15 +9,16 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="381dp"
         android:layout_height="70dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/view_menu"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="50dp"
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="AeroPay"
+            android:textColor="@color/black"
             android:textSize="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.197"
@@ -62,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Your Balance"
+            android:textColor="@color/black"
             android:textSize="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.904"
@@ -78,7 +81,7 @@
             android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.877"
+            app:layout_constraintHorizontal_bias="0.887"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,37 +89,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="381dp"
-        android:layout_height="250dp"
-        android:background="@drawable/view_menu"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="0.452" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="381dp"
-        android:layout_height="283dp"
+        android:layout_width="383dp"
+        android:layout_height="220dp"
         android:background="@drawable/view_menu"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.278">
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.409" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintVertical_bias="0.05">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/appCompatButton"
@@ -128,6 +111,7 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -136,6 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Arrival"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.048"
             app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +136,6 @@
             android:textColor="@color/primaryTextColor"
             android:textColorHint="@color/primaryTextColor"
             android:textSize="14dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.048"
             app:layout_constraintStart_toStartOf="parent"
@@ -164,6 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Departure"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
@@ -191,6 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
             android:text="Arrival Date"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.048"
             app:layout_constraintStart_toStartOf="parent"
@@ -216,6 +202,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="88dp"
             android:text="Arrival Date"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.944"
             app:layout_constraintStart_toStartOf="parent"
@@ -236,42 +223,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/PulangPergi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="108dp"
-            android:text="Round-Trip"
-            android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/class"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="156dp"
-            android:text="Class"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editClass"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="172dp"
-            android:hint="First Class"
-            android:textColor="@color/primaryTextColor"
-            android:textColorHint="@color/primaryTextColor"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.139"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutmenu"
+        android:layout_width="383dp"
+        android:layout_height="220dp"
+        android:background="@drawable/view_menu"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.1">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

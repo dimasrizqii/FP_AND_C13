@@ -28,8 +28,10 @@
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/view_bg.xml" value="0.198" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/view_menu.xml" value="0.198" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/activity_home.xml" value="0.264" />
-        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
-        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_history.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/activity_main.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/activity_splash.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_history.xml" value="0.264" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_profile.xml" value="0.1403985507246377" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_register.xml" value="0.1403985507246377" />
@@ -38,6 +40,7 @@
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_history.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_ticket.xml" value="0.22010869565217392" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/partial_dashboard.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/menu/another_menu.xml" value="0.25" />
       </map>
     </option>
   </component>
