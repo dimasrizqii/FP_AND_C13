@@ -20,6 +20,9 @@ class RegisterFragment : Fragment() {
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var dataStoreManager: DataStoreManager
 
+    private val existUsername = listOf<String>("shawn","peter","raul","mendes")
+    private val existEmail = listOf<String>("shawn@test.com","peter@test.com","raul@test.com","mendes@test.com")
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -54,5 +57,38 @@ class RegisterFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun validateRegisterFragmentInput(
+        username: String,
+        password: String,
+        repeatPassword: String,
+        email: String
+
+    ): Boolean {
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
+            return false
+        }
+
+        if (username in existUsername) {
+            return false
+        }
+
+        if (password.length < 6) {
+            false
+        }
+
+        if (password.length > 50) {
+            false
+        }
+        if (password != repeatPassword){
+            return false
+        }
+
+        if (email in existEmail) {
+            return false
+        }
+
+        return true
     }
 }

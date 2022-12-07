@@ -10,6 +10,7 @@
     <string name="birthday">Birthday</string>
     <string name="email">Email</string>
     <string name="edit">Edit</string>
+    <string name="update">Update</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
     <string name="register">Register</string>

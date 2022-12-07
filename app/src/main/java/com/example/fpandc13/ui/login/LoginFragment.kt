@@ -22,6 +22,8 @@ class LoginFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var dataStoreManager: DataStoreManager
 
+    private val existUsername = listOf<String>("shawn","peter","raul","mendes")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -86,5 +88,28 @@ class LoginFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    fun validateLoginFragmentInput(
+        username: String,
+        password: String
+    ): Boolean {
+        if (username.isEmpty() || password.isEmpty()){
+            return false
+        }
+
+        if (username in existUsername) {
+            return false
+        }
+
+        if (password.length < 6) {
+            false
+        }
+
+        if (password.length > 50) {
+            false
+        }
+        return true
     }
 }
