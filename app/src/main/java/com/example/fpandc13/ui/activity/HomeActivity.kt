@@ -1,21 +1,31 @@
 package com.example.fpandc13.ui.activity
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.ActivityHomeBinding
+import com.example.fpandc13.databinding.FragmentDashboardBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityHomeBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +35,10 @@ class HomeActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
         getSupportActionBar()?.hide()
+        setupNavigation()
+
+
+
     }
 
 
@@ -75,7 +89,23 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomBar.setupWithNavController( navController)
     }
 
+
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    private fun setupNavigation() {
+        // As we're inside a fragment calling `findNavController()` directly will crash the app
+        // Hence, get a reference of `NavHostFragment`
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
+
+        // set navigation controller
+        navController = navHostFragment.findNavController()
+
+        // appbar configuration (for back button)
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }

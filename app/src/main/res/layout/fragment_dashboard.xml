@@ -203,17 +203,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/daeEdit"
+            <TextView
+                android:id="@+id/dateArEdit"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="108dp"
-                android:hint="05 Des 2022"
+                android:text="11-12-2022"
                 android:textColor="@color/primaryTextColor"
                 android:textColorHint="@color/primaryTextColor"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.047"
+                app:layout_constraintHorizontal_bias="0.064"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -222,25 +222,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="88dp"
-                android:text="Arrival Date"
+                android:text="Departure Date"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.944"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/dateEdit"
+            <TextView
+                android:id="@+id/dateDepEdit"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="108dp"
-                android:hint="05 Des 2022"
+                android:text="11-12-2022"
                 android:textAlignment="textEnd"
                 android:textColor="@color/primaryTextColor"
                 android:textColorHint="@color/primaryTextColor"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.945"
+                app:layout_constraintHorizontal_bias="0.927"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
