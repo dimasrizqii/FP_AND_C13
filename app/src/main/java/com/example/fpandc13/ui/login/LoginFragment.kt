@@ -7,20 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
-import com.example.fpandc13.data.local.datastore.DataStoreManager
 import com.example.fpandc13.databinding.FragmentLoginBinding
 import com.example.fpandc13.ui.activity.HomeActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var loginViewModel: LoginViewModel
-    private lateinit var dataStoreManager: DataStoreManager
+    private val loginViewModel: LoginViewModel by viewModels()
 
     private val existUsername = listOf<String>("shawn","peter","raul","mendes")
 
@@ -36,8 +36,15 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataStoreManager = DataStoreManager(requireContext())
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory(dataStoreManager))[LoginViewModel::class.java]
+        loginViewModel.getLoginStatus().observe(viewLifecycleOwner) {
+            if (it == true) {
+                activity?.let { it ->
+                    val intent = Intent(it, HomeActivity::class.java)
+                    it.startActivity(intent)}
+            } else {
+                requireContext()
+            }
+        }
 
         binding.tvCreateAccount.setOnClickListener { openRegister() }
         binding.btnLogin.setOnClickListener { toLogin() }

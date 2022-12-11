@@ -1,13 +1,11 @@
 package com.example.fpandc13.ui.activity
 
-import android.app.DatePickerDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.PopupMenu
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -16,11 +14,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.ActivityHomeBinding
-import com.example.fpandc13.databinding.FragmentDashboardBinding
-import java.text.SimpleDateFormat
-import java.util.*
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityHomeBinding
@@ -34,11 +30,8 @@ class HomeActivity : AppCompatActivity() {
         navController = findNavController(R.id.main_fragment)
         setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
-        getSupportActionBar()?.hide()
+        supportActionBar?.hide()
         setupNavigation()
-
-
-
     }
 
 

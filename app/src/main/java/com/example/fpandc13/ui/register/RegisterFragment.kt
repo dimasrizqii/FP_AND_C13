@@ -5,20 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
-import com.example.fpandc13.data.local.datastore.DataStoreManager
 import com.example.fpandc13.databinding.FragmentRegisterBinding
-import com.example.fpandc13.ui.login.LoginViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var registerViewModel: RegisterViewModel
-    private lateinit var dataStoreManager: DataStoreManager
+    private val registerViewModel : RegisterViewModel by viewModels()
 
     private val existUsername = listOf<String>("shawn","peter","raul","mendes")
     private val existEmail = listOf<String>("shawn@test.com","peter@test.com","raul@test.com","mendes@test.com")
@@ -32,10 +31,6 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        dataStoreManager = DataStoreManager(requireContext())
-        registerViewModel = ViewModelProvider(this, LoginViewModelFactory(dataStoreManager))[RegisterViewModel::class.java]
-
 
         binding.tvHaveAccount.setOnClickListener { openLogin() }
         binding.btnRegister.setOnClickListener { toCreateAccount() }

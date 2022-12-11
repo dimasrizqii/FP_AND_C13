@@ -1,11 +1,18 @@
 package com.example.fpandc13.ui.home.profile
 
+import com.example.fpandc13.ui.login.LoginFragment
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 
 class ProfileFragmentTest {
 
     private lateinit var profile: ProfileFragment
+
+    @Before
+    fun setUp(){
+        profile = ProfileFragment()
+    }
 
     @Test
     fun name_exist() {

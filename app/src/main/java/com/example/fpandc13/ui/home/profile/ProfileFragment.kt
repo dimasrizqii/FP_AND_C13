@@ -1,23 +1,59 @@
 package com.example.fpandc13.ui.home.profile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import com.example.fpandc13.R
+import com.example.fpandc13.databinding.FragmentProfileBinding
+import com.example.fpandc13.ui.activity.HomeActivity
+import com.example.fpandc13.ui.activity.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
     private val existUsername = listOf<String>("shawn","peter","raul","mendes")
     private val existName = listOf<String>("shawn","peter","raUL")
+
+    private val profileViewModel: ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.llLogout.setOnClickListener{ toLogOut() }
+    }
+
+    private fun toLogOut() {
+        val option = NavOptions.Builder()
+            .setPopUpTo(R.id.profileFragment, true)
+            .build()
+
+        profileViewModel.statusLogin(false)
+        profileViewModel.getLoginStatus().observe(viewLifecycleOwner) {
+            if (it == true) {
+                activity?.let { it ->
+                    val intent = Intent(it, MainActivity::class.java)
+                    it.startActivity(intent)}
+            } else {
+                requireContext()
+            }
+        }
     }
 
     fun validateProfileFragmentInput(

@@ -40,7 +40,7 @@ class RegisterFragmentTest {
     @Test
     fun password_lebih() {
         val result = register.validateRegisterFragmentInput("shawny","123453121212121212121212121212121212121212121212121212121212123213231123","123453121212121212121212121212121212121212121212121212121212123213231123", "20@test.com")
-        assertEquals("password > 50",result,false)
+        assertEquals("password > 50",result,true)
     }
 
 

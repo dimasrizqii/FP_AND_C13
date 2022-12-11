@@ -1,12 +1,19 @@
 package com.example.fpandc13.ui.home.dashboard
 
-import com.example.fpandc13.databinding.FragmentDashboardBinding
+
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.ViewGroup
+
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.example.fpandc13.R
-import com.example.fpandc13.ui.home.DatePickerFragment
 
+import com.example.fpandc13.databinding.FragmentDashboardBinding
+import com.example.fpandc13.ui.home.DatePickerFragment
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
@@ -66,5 +73,3 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
         _binding = null
     }
 }
-
-

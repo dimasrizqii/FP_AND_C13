@@ -1,5 +1,6 @@
-package com.example.fpandc13.ui.login
+package com.example.fpandc13.ui.home.profile
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -10,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val dataStoreManager: DataStoreManager): ViewModel() {
+class ProfileViewModel @Inject constructor(val dataStoreManager: DataStoreManager, application: Application) : ViewModel() {
 
     fun statusLogin(isLogin: Boolean) {
         viewModelScope.launch {
@@ -18,16 +19,7 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: DataStore
         }
     }
 
-    fun getEmail(): LiveData<String> {
-        return dataStoreManager.getEmail().asLiveData()
-    }
-
-    fun getPassword(): LiveData<String> {
-        return dataStoreManager.getPassword().asLiveData()
-    }
-
     fun getLoginStatus(): LiveData<Boolean> {
         return dataStoreManager.getLoginStatus().asLiveData()
     }
-
 }
