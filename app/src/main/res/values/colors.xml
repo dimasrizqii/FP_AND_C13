@@ -12,6 +12,7 @@
     <color name="colorAccent">#00A5FF</color>
     <color name="dark_blue">#00427A</color>
     <color name="light_blue">#005FAF</color>
+    <color name="primary">#00CCFF</color>
 
     <!--colors for modern ui-->
     <color name="colorTextPrimary">#fff</color>
