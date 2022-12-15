@@ -21,8 +21,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityHomeBinding
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -33,7 +31,6 @@ class HomeActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setupNavigation()
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.another_menu, menu)
@@ -81,8 +78,6 @@ class HomeActivity : AppCompatActivity() {
         //binding.bottomBar.setupWithNavController(menu, navController)
         binding.bottomBar.setupWithNavController( navController)
     }
-
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()

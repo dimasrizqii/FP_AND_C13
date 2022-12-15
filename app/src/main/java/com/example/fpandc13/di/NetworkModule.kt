@@ -1,5 +1,6 @@
 package com.example.fpandc13.di
 
+import com.example.fpandc13.service.auth.register.AeroplaneAuthApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,5 +35,10 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
+
+    @Singleton
+    @Provides
+    fun provideAuthApi(retrofit: Retrofit):AeroplaneAuthApiInterface =
+        retrofit.create(AeroplaneAuthApiInterface::class.java)
 
 }
