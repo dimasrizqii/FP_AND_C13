@@ -1,4 +1,4 @@
-package com.example.fpandc13.service.auth.register
+package com.example.fpandc13.service.auth
 
 import com.example.fpandc13.models.auth.login.LoginRequestBody
 import com.example.fpandc13.models.auth.login.LoginResponse
