@@ -1,15 +1,20 @@
 package com.example.fpandc13.di
 
-import com.example.fpandc13.data.repository.AeroplaneAuthRepository
-import com.example.fpandc13.data.repository.AeroplaneAuthRepositoryImpl
+import com.binar.gosky.data.repository.*
+import com.example.authaeroplane.data.repository.AuthRepository
+import com.example.authaeroplane.data.repository.AuthRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 abstract class RepositoryModule {
+
     @Binds
-    abstract fun provideAeroplaneAuthRepository(authRepositoryImpl: AeroplaneAuthRepositoryImpl) : AeroplaneAuthRepository
+    abstract fun provideAuthRepository(authRepositoryImpl: AuthRepositoryImpl): AuthRepository
+
+    @Binds
+    abstract fun provideUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
 }

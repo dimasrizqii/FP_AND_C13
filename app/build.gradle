@@ -3,10 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
-    id 'kotlin-parcelize'
+//    id 'kotlin-parcelize'
     id 'kotlin-android'
     id 'dagger.hilt.android.plugin'
 }
+
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdk 32

@@ -144,7 +144,6 @@
                                 android:layout_height="45dp"
                                 android:layout_below="@+id/tvBerangkat"
                                 android:layout_marginTop="10dp"
-                                android:background="@drawable/spinner_background"
                                 android:spinnerMode="dropdown" />
 
                             <ImageView
@@ -187,7 +186,6 @@
                                 android:layout_height="45dp"
                                 android:layout_below="@+id/tvTujuan"
                                 android:layout_marginTop="10dp"
-                                android:background="@drawable/spinner_background"
                                 android:spinnerMode="dropdown" />
 
                             <ImageView
@@ -329,7 +327,6 @@
                             android:layout_height="45dp"
                             android:layout_below="@+id/tvKelas"
                             android:layout_marginTop="10dp"
-                            android:background="@drawable/spinner_background"
                             android:spinnerMode="dropdown" />
 
                         <ImageView

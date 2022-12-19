@@ -1,7 +1,10 @@
 package com.example.fpandc13.di
 
-import com.example.fpandc13.data.network.datasource.AeroplaneAuthDataSource
-import com.example.fpandc13.data.network.datasource.AeroplaneAuthDataSourceImpl
+
+import com.example.authaeroplane.data.local.datasource.UserLocalDataSource
+import com.example.authaeroplane.data.local.datasource.UserLocalDataSourceImpl
+import com.example.fpandc13.data.network.datasource.AuthRemoteDataSource
+import com.example.fpandc13.data.network.datasource.AuthRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -10,6 +13,10 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataSourceModule {
+
     @Binds
-    abstract fun provideAeroplaneAuthDataSource(authDataSourceImpl: AeroplaneAuthDataSourceImpl) : AeroplaneAuthDataSource
+    abstract fun provideAuthRemoteDataSource(authRemoteDataSourceImpl: AuthRemoteDataSourceImpl): AuthRemoteDataSource
+
+    @Binds
+    abstract fun provideUserLocalDataSource(userLocalDataSourceImpl: UserLocalDataSourceImpl): UserLocalDataSource
 }

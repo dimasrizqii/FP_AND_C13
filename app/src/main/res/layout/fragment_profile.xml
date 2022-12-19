@@ -143,46 +143,18 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewLogout"
+
+            <Button
+                android:id="@+id/logout"
                 android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="64dp"
-                android:outlineProvider="none"
-                app:cardBackgroundColor="#83000000"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="0dp">
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/login"
+                android:text="Logout"
+                app:cornerRadius="20dp" />
 
-                <LinearLayout
-                    android:id="@+id/llLogout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    >
 
-                    <TextView
-                        android:id="@+id/txtLogout"
-                        style="@style/TextAppearance.FPANDC13.detail.text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="@string/logout" />
-
-                    <ImageView
-                        android:id="@+id/imgLogout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:backgroundTint="#00000000"
-                        android:src="@drawable/ic_baseline_login_24" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

@@ -1,4 +1,4 @@
-package com.example.fpandc13.ui.activity.splash
+package com.example.fpandc13.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.example.fpandc13.R
-import com.example.fpandc13.ui.activity.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

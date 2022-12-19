@@ -1,16 +1,22 @@
 package com.example.fpandc13.ui.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.fpandc13.data.local.datastore.DataStoreManager
+import androidx.lifecycle.*
+import com.binar.gosky.data.repository.UserRepository
+import com.example.authaeroplane.data.local.preference.UserDataStoreManager
+import com.example.authaeroplane.data.repository.AuthRepository
+import com.example.fpandc13.models.auth.login.LoginRequestBody
+import com.example.fpandc13.models.auth.login.LoginResponse
+import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val dataStoreManager: DataStoreManager): ViewModel() {
+class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataStoreManager, private val authRepository: AuthRepository, private val userRepository: UserRepository): ViewModel() {
+
+    private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
+    val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
 
     fun statusLogin(isLogin: Boolean) {
         viewModelScope.launch {
@@ -28,6 +34,26 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: DataStore
 
     fun getLoginStatus(): LiveData<Boolean> {
         return dataStoreManager.getLoginStatus().asLiveData()
+    }
+
+
+    fun postLoginUser(loginRequestBody: LoginRequestBody) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val loginResponse = authRepository.postLoginUser(loginRequestBody)
+            viewModelScope.launch(Dispatchers.Main) {
+                _postLoginUserResponse.postValue(loginResponse)
+            }
+        }
+    }
+
+    fun setUserLogin(isLogin: Boolean) {
+        viewModelScope.launch {
+            userRepository.setUserLogin(isLogin)
+        }
+    }
+
+    fun getUserLoginStatus(): LiveData<Boolean> {
+        return userRepository.getUserLoginStatus().asLiveData()
     }
 
 }

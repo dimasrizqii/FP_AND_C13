@@ -1,6 +1,6 @@
 package com.example.fpandc13.di
 
-import com.example.fpandc13.service.auth.AeroplaneAuthApiInterface
+import com.example.fpandc13.service.auth.Interface.AeroplaneAuthApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    const val BASE_URL = "http://final-be-project-aeroplane-production.up.railway.app/"
+    const val BASE_URL = "https://final-be-project-aeroplane-production.up.railway.app/"
 
     private  val logging : HttpLoggingInterceptor
         get(){
@@ -38,7 +38,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideAuthApi(retrofit: Retrofit): AeroplaneAuthApiInterface =
+    fun provideAuthApi(retrofit: Retrofit):AeroplaneAuthApiInterface =
         retrofit.create(AeroplaneAuthApiInterface::class.java)
 
 }

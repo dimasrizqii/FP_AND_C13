@@ -19,10 +19,18 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: ProfileViewModel by viewModels()
+
     private val existUsername = listOf<String>("shawn","peter","raul","mendes")
     private val existName = listOf<String>("shawn","peter","raUL")
 
-    private val profileViewModel: ProfileViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +44,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.llLogout.setOnClickListener{ toLogOut() }
+        binding.logout.setOnClickListener(){
+            toLogOut()
+        }
     }
 
     private fun toLogOut() {
@@ -44,8 +54,8 @@ class ProfileFragment : Fragment() {
             .setPopUpTo(R.id.profileFragment, true)
             .build()
 
-        profileViewModel.statusLogin(false)
-        profileViewModel.getLoginStatus().observe(viewLifecycleOwner) {
+        viewModel.statusLogin(false)
+        viewModel.getLoginStatus().observe(viewLifecycleOwner) {
             if (it == true) {
                 activity?.let { it ->
                     val intent = Intent(it, MainActivity::class.java)
@@ -79,6 +89,4 @@ class ProfileFragment : Fragment() {
 
         return true
     }
-
-
 }
