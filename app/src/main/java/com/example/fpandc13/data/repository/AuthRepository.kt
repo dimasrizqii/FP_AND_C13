@@ -1,10 +1,10 @@
-package com.example.authaeroplane.data.repository
+package com.example.fpandc13.data.repository
 
 import com.example.fpandc13.data.network.datasource.AuthRemoteDataSource
-import com.example.fpandc13.models.auth.login.LoginRequestBody
-import com.example.fpandc13.models.auth.login.LoginResponse
-import com.example.fpandc13.models.auth.register.RegisterRequestBody
-import com.example.fpandc13.models.auth.register.RegisterResponse
+import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
+import com.example.fpandc13.data.network.models.auth.login.LoginResponse
+import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody
+import com.example.fpandc13.data.network.models.auth.register.RegisterResponse
 import com.example.fpandc13.wrapper.Resource
 import javax.inject.Inject
 

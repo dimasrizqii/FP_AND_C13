@@ -1,8 +1,9 @@
 package com.example.fpandc13.di
 
-import com.binar.gosky.data.repository.*
-import com.example.authaeroplane.data.repository.AuthRepository
-import com.example.authaeroplane.data.repository.AuthRepositoryImpl
+import com.example.fpandc13.data.repository.AuthRepository
+import com.example.fpandc13.data.repository.AuthRepositoryImpl
+import com.example.fpandc13.data.repository.UserRepository
+import com.example.fpandc13.data.repository.UserRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

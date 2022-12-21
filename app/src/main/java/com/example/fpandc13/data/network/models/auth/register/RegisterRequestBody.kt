@@ -1,4 +1,4 @@
-package com.example.fpandc13.models.auth.register
+package com.example.fpandc13.data.network.models.auth.register
 
 
 import com.google.gson.annotations.SerializedName

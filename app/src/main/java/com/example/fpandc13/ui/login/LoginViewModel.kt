@@ -1,11 +1,11 @@
 package com.example.fpandc13.ui.login
 
 import androidx.lifecycle.*
-import com.binar.gosky.data.repository.UserRepository
-import com.example.authaeroplane.data.local.preference.UserDataStoreManager
-import com.example.authaeroplane.data.repository.AuthRepository
-import com.example.fpandc13.models.auth.login.LoginRequestBody
-import com.example.fpandc13.models.auth.login.LoginResponse
+import com.example.fpandc13.data.repository.UserRepository
+import com.example.fpandc13.data.local.preference.UserDataStoreManager
+import com.example.fpandc13.data.repository.AuthRepository
+import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
+import com.example.fpandc13.data.network.models.auth.login.LoginResponse
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

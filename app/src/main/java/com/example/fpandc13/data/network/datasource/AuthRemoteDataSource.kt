@@ -2,13 +2,13 @@ package com.example.fpandc13.data.network.datasource
 
 
 
-import com.example.fpandc13.models.auth.login.LoginRequestBody
-import com.example.fpandc13.models.auth.login.LoginResponse
-import com.example.fpandc13.models.auth.register.RegisterRequestBody
-import com.example.fpandc13.models.auth.register.RegisterResponse
-import com.example.fpandc13.models.auth.verify.VerifyRequestBody
-import com.example.fpandc13.models.auth.verify.VerifyResponse
-import com.example.fpandc13.service.auth.Interface.AeroplaneAuthApiInterface
+import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
+import com.example.fpandc13.data.network.models.auth.login.LoginResponse
+import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody
+import com.example.fpandc13.data.network.models.auth.register.RegisterResponse
+import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
+import com.example.fpandc13.data.network.models.auth.verify.VerifyResponse
+import com.example.fpandc13.data.network.service.auth.Interface.AeroplaneAuthApiInterface
 import javax.inject.Inject
 
 interface AuthRemoteDataSource {

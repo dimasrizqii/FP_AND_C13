@@ -25,7 +25,6 @@
     <!--colors for card-->
     <color name="whiteCardColor">#fff</color>
 
-
     <color name="cardColor">#F5F5F5</color>
     <color name="hintTextColor">#D2F4F8</color>
     <color name="textInputOutlineColor">#6ff9ff</color>

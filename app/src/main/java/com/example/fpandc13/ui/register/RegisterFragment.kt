@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.FragmentRegisterBinding
-import com.example.fpandc13.models.auth.register.RegisterRequestBody
+import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -13,9 +13,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.FragmentLoginBinding
-import com.example.fpandc13.models.auth.login.LoginRequestBody
+import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.ui.activity.HomeActivity
-import com.example.fpandc13.ui.activity.MainActivity
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,7 +26,7 @@ class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModels()
 
-    private val existUsername = listOf<String>("shawn","peter","raul","mendes")
+    private val existUsername = listOf("shawn","peter","raul","mendes")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

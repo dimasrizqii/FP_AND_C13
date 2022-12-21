@@ -1,4 +1,4 @@
-package com.example.fpandc13.models.auth.verify
+package com.example.fpandc13.data.network.models.auth.verify
 
 
 import com.google.gson.annotations.SerializedName

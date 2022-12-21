@@ -1,6 +1,6 @@
 package com.example.fpandc13.di
 
-import com.example.fpandc13.service.auth.Interface.AeroplaneAuthApiInterface
+import com.example.fpandc13.data.network.service.auth.Interface.AeroplaneAuthApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,7 +38,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideAuthApi(retrofit: Retrofit):AeroplaneAuthApiInterface =
+    fun provideAuthApi(retrofit: Retrofit): AeroplaneAuthApiInterface =
         retrofit.create(AeroplaneAuthApiInterface::class.java)
 
 }
