@@ -24,6 +24,8 @@ class RegisterFragment : Fragment() {
 
     private val viewModel : RegisterViewModel by viewModels()
 
+    private val existUsername = listOf<String>("shawn","peter","raul","mendes")
+    private val existEmail = listOf<String>("shawn@test.com","peter@test.com","raul@test.com","mendes@test.com")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -60,8 +62,8 @@ class RegisterFragment : Fragment() {
     }
 
     private fun registerUser(email: String, password: String) {
-        viewModel.postRegisterUser(RegisterRequestBody(email, password))
-        Log.d("register", RegisterRequestBody(email, password).toString())
+        viewModel.postRegisterUser(RegisterRequestBody(email = email, password = password))
+        Log.d("register", RegisterRequestBody(email = email, password = password).toString())
     }
 
     private fun observeData() {
@@ -71,7 +73,7 @@ class RegisterFragment : Fragment() {
                     if (it.data?.message.equals("User created successfully")) {
                         Toast.makeText(requireContext(), it.data?.message, Toast.LENGTH_LONG).show()
                         findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-                        Toast.makeText(requireContext(), "Register User Success,Please Login", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Register User Success, Please Login", Toast.LENGTH_SHORT).show()
 
                     }
                     Log.d("registerresponse", it.data?.message.toString())
@@ -127,5 +129,37 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
 
+    fun validateRegisterFragmentInput(
+        username: String,
+        password: String,
+        repeatPassword: String,
+        email: String
+
+    ): Boolean {
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
+            return false
+        }
+
+        if (username in existUsername) {
+            return false
+        }
+
+        if (password.length < 6) {
+            false
+        }
+
+        if (password.length > 50) {
+            false
+        }
+        if (password != repeatPassword){
+            return false
+        }
+
+        if (email in existEmail) {
+            return false
+        }
+
+        return true
+    }
 
 }

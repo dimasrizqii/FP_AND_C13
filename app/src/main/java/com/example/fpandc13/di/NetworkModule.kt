@@ -1,6 +1,6 @@
 package com.example.fpandc13.di
 
-import com.example.fpandc13.data.network.service.auth.Interface.AeroplaneAuthApiInterface
+import com.example.fpandc13.data.network.service.auth.AeroplaneAuthApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
