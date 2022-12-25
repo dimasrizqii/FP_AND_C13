@@ -2,6 +2,7 @@ package com.example.fpandc13.data.network.datasource
 
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
+import com.example.fpandc13.data.network.models.auth.profile.get.Data
 import com.example.fpandc13.data.network.models.auth.profile.get.GetProfileResponse
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody

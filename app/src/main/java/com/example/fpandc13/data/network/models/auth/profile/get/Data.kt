@@ -4,6 +4,8 @@ package com.example.fpandc13.data.network.models.auth.profile.get
 import com.google.gson.annotations.SerializedName
 
 data class Data(
+    @SerializedName("username")
+    val username: String? = null,
     @SerializedName("address")
     val address: String? = null,
     @SerializedName("country_code")
@@ -21,7 +23,6 @@ data class Data(
     @SerializedName("photo")
     val photo: String? = null,
     @SerializedName("role")
-    val role: Int? = null,
-    @SerializedName("username")
-    val username: String? = null
+    val role: Int? = null
+
 )

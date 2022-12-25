@@ -14,7 +14,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.FragmentLoginBinding
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
-import com.example.fpandc13.ui.activity.HomeActivity
+import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
+import com.example.fpandc13.ui.activity.Home.HomeActivity
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,18 +50,66 @@ class LoginFragment : Fragment() {
                 requireContext()
             }
         }
-
+        observeVerify()
         observeData()
 
         binding.tvCreateAccount.setOnClickListener { openRegister() }
-        binding.btnLogin.setOnClickListener { loginUser() }
+        binding.btnLogin.setOnClickListener (){
+            VerifyUser()
+            loginUser()
+        }
+    }
+
+    private fun VerifyUser() {
+            viewModel.postLoginUserResponse.observe(viewLifecycleOwner){
+                when(it){
+                    is Resource.Success ->{
+
+                        val email = binding.etEmailLogin.text.toString().trim()
+                        val password = binding.etPasswordLogin.text.toString().trim()
+                        val token = "${it.data?.token}"
+
+                        binding.etEmailLogin.isEnabled = false
+                        binding.etPasswordLogin.isEnabled = false
+
+                        viewModel.postVerifyUser(parseFormIntoEntityVerify(email,password,token))
+                    }
+
+                    else -> {} }
+            }
+    }
+
+    private fun loginUser() {
+        if (validateInput()) {
+            val email = binding.etEmailLogin.text.toString().trim()
+            val password = binding.etPasswordLogin.text.toString().trim()
+
+            binding.etEmailLogin.isEnabled = false
+            binding.etPasswordLogin.isEnabled = false
+            viewModel.postLoginUser(parseFormIntoEntity(email, password))
+        }
+    }
+
+    private fun observeVerify(){
+        viewModel.postVerifyUserResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+                    Toast.makeText(requireContext(), "${it.data?.message}", Toast.LENGTH_LONG).show()
+                    Log.d("VerifyResponse", it.data.toString())
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Verifikasi Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+
+        }
     }
 
     private fun observeData() {
         viewModel.postLoginUserResponse.observe(viewLifecycleOwner) {
             binding.etEmailLogin.isEnabled = true
             binding.etPasswordLogin.isEnabled = true
-
             when (it) {
                 is Resource.Success -> {
                     Toast.makeText(requireContext(), " ${it.data?.message}", Toast.LENGTH_LONG).show()
@@ -69,10 +118,16 @@ class LoginFragment : Fragment() {
                     navigateToHome()
                 }
                 is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Login Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
+
+                }
+                is Resource.Empty -> {
+                    Toast.makeText(requireContext(), "Empty", Toast.LENGTH_LONG).show()
                 }
                 else -> {}
             }
         }
+        //datastore
         viewModel.getUserLoginStatus().observe(viewLifecycleOwner) {
             Log.d("getlogin", it.toString())
             if (it) {
@@ -88,19 +143,13 @@ class LoginFragment : Fragment() {
             it.startActivity(intent)}
     }
 
-    private fun loginUser() {
-        if (validateInput()) {
-            val email = binding.etEmailLogin.text.toString().trim()
-            val password = binding.etPasswordLogin.text.toString().trim()
 
-            binding.etEmailLogin.isEnabled = false
-            binding.etPasswordLogin.isEnabled = false
-            viewModel.postLoginUser(parseFormIntoEntity(email, password))
-        }
-    }
 
     private fun parseFormIntoEntity(email: String, password: String): LoginRequestBody {
         return LoginRequestBody(email, password)
+    }
+    private fun parseFormIntoEntityVerify(email: String, password: String, token : String): VerifyRequestBody{
+        return VerifyRequestBody(email,password,token)
     }
 
     private fun validateInput(): Boolean {

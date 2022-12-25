@@ -5,6 +5,8 @@ import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
 import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody
 import com.example.fpandc13.data.network.models.auth.register.RegisterResponse
+import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
+import com.example.fpandc13.data.network.models.auth.verify.VerifyResponse
 import com.example.fpandc13.wrapper.Resource
 import javax.inject.Inject
 
@@ -12,6 +14,7 @@ interface AuthRepository {
 
     suspend fun postRegisterUser(registerRequestBody: RegisterRequestBody): Resource<RegisterResponse>
     suspend fun postLoginUser(loginRequestBody: LoginRequestBody): Resource<LoginResponse>
+    suspend fun postVerifyUser(verifyRequestBody: VerifyRequestBody): Resource<VerifyResponse>
 }
 
 class AuthRepositoryImpl @Inject constructor(private val dataSource: AuthRemoteDataSource) :
@@ -27,6 +30,12 @@ class AuthRepositoryImpl @Inject constructor(private val dataSource: AuthRemoteD
     override suspend fun postLoginUser(loginRequestBody: LoginRequestBody): Resource<LoginResponse> {
         return proceed {
             dataSource.postLogin(loginRequestBody)
+        }
+    }
+
+    override suspend fun postVerifyUser(verifyRequestBody: VerifyRequestBody): Resource<VerifyResponse> {
+        return proceed {
+            dataSource.postVerify(verifyRequestBody)
         }
     }
 

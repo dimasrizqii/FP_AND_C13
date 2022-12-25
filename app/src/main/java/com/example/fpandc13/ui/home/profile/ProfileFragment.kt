@@ -2,16 +2,22 @@ package com.example.fpandc13.ui.home.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import com.example.fpandc13.R
+import com.example.fpandc13.data.network.models.auth.profile.get.Data
+import com.example.fpandc13.data.network.models.auth.profile.get.GetProfileResponse
+import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
 import com.example.fpandc13.databinding.FragmentProfileBinding
-import com.example.fpandc13.ui.activity.HomeActivity
+import com.example.fpandc13.ui.activity.Home.HomeActivity
 import com.example.fpandc13.ui.activity.MainActivity
+import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,8 +50,16 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observeGet()
+
         binding.logout.setOnClickListener(){
             toLogOut()
+        }
+
+        binding.btnBack.setOnClickListener(){
+            activity?.let { it ->
+                val intent = Intent(it, HomeActivity::class.java)
+                it.startActivity(intent)}
         }
     }
 
@@ -63,6 +77,55 @@ class ProfileFragment : Fragment() {
             } else {
                 requireContext()
             }
+        }
+    }
+
+    private fun GetProfile() {
+        viewModel.postLoginUserResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+                    viewModel.GetProfileUser("${it.data?.token}")
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Reload Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+        }
+        viewModel.GetProfileUserResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+//                  viewModel.GetProfileUser()
+                }
+                else -> {}
+            }
+        }
+    }
+    private fun parseFormIntoEntity(token : String): Data {
+        return Data(
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "")
+    }
+
+    private fun observeGet(){
+        viewModel.GetProfileUserResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+                    Toast.makeText(requireContext(), "${it.data?.data}", Toast.LENGTH_LONG).show()
+                    Log.d("VerifyResponse", it.data.toString())
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Reload Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+
         }
     }
 

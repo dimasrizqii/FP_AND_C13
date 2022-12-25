@@ -1,11 +1,13 @@
-package com.example.fpandc13.ui.activity
+package com.example.fpandc13.ui.activity.Home
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -14,12 +16,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.ActivityHomeBinding
+import com.example.fpandc13.ui.home.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityHomeBinding
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
