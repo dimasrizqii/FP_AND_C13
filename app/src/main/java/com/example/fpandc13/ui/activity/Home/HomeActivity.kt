@@ -23,8 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityHomeBinding
-
-    private val viewModel: HomeViewModel by viewModels()
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
