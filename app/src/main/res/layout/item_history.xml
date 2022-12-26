@@ -33,7 +33,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvDate"
+                android:id="@+id/dateDepEdit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -71,7 +71,7 @@
                     android:id="@+id/tvNama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
+                    android:text="@string/name"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -142,7 +142,7 @@
                     android:id="@+id/tvKode2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SMG"
+                    android:text="SBY"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -151,7 +151,7 @@
                     android:id="@+id/tvTujuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Semarang"
+                    android:text="Surabaya"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
