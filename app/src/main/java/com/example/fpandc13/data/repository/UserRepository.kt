@@ -13,8 +13,8 @@ import javax.inject.Inject
 
 interface UserRepository {
     suspend fun setUserLogin(isLogin: Boolean)
-    suspend fun GetProfileData(token: String): Resource<GetProfileResponse>
-    suspend fun PutProfileData(token: String): Resource<UpdateProfileResponse>
+    suspend fun getProfileData(token: String): Resource<GetProfileResponse>
+    suspend fun putProfileData(token: String): Resource<UpdateProfileResponse>
     fun getUserLoginStatus(): Flow<Boolean>
 }
 
@@ -23,13 +23,13 @@ class UserRepositoryImpl @Inject constructor(private val userLocalDataSource: Us
         return userLocalDataSource.setUserLogin(isLogin)
     }
 
-    override suspend fun GetProfileData(token: String): Resource<GetProfileResponse>{
+    override suspend fun getProfileData(token: String): Resource<GetProfileResponse>{
         return proceed {
             dataSource.getProfile(token)
         }
     }
 
-    override suspend fun PutProfileData(token: String): Resource<UpdateProfileResponse>{
+    override suspend fun putProfileData(token: String): Resource<UpdateProfileResponse>{
         return proceed {
             dataSource.putProfile(token)
         }
