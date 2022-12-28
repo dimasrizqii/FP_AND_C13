@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardColor"
-    tools:context=".ui.home.ticketList.TicketListFragment">
+    tools:context=".ui.home.notif.NotifikasiFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
-                    android:text="List Ticket"
+                    android:text="Notifikasi"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -50,7 +50,7 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTicketList"
+                android:id="@+id/rvNotifikasi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

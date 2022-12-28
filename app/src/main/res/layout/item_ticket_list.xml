@@ -168,7 +168,6 @@
                 android:layout_height="43dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/login_button_bk"
-
                 android:text="Pilih Pergi"
                 app:cornerRadius="20dp"
                 app:layout_constraintStart_toStartOf="@+id/price"
