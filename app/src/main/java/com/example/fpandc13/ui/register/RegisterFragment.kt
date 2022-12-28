@@ -74,9 +74,9 @@ class RegisterFragment : Fragment() {
                         Toast.makeText(requireContext(), it.data?.message, Toast.LENGTH_LONG).show()
                         findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
                         Toast.makeText(requireContext(), "Register User Success, Please Login", Toast.LENGTH_SHORT).show()
-
+                        Log.d("registerresponse", it.data?.message.toString())
                     }
-                    Log.d("registerresponse", it.data?.message.toString())
+
                 }
                 else -> {}
             }

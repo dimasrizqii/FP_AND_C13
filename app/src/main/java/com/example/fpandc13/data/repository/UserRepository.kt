@@ -4,17 +4,21 @@ import android.util.JsonToken
 import com.example.fpandc13.data.local.datasource.UserLocalDataSource
 import com.example.fpandc13.data.network.datasource.AuthRemoteDataSource
 import com.example.fpandc13.data.network.models.auth.profile.get.GetProfileResponse
+import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody
 import com.example.fpandc13.data.network.models.auth.register.RegisterResponse
 import com.example.fpandc13.wrapper.Resource
 import kotlinx.coroutines.flow.Flow
+import java.sql.ClientInfoStatus
 import javax.inject.Inject
 
 interface UserRepository {
     suspend fun setUserLogin(isLogin: Boolean)
-    suspend fun getProfileData(token: String): Resource<GetProfileResponse>
-    suspend fun putProfileData(token: String): Resource<UpdateProfileResponse>
+    suspend fun setUserToken(isToken: String)
+    suspend fun SaveUserToken(isToken: String)
+    suspend fun GetProfileData(token : String): Resource<GetUserProfileResponse>
+    suspend fun PutProfileData(token: String): Resource<UpdateProfileResponse>
     fun getUserLoginStatus(): Flow<Boolean>
 }
 
@@ -23,13 +27,21 @@ class UserRepositoryImpl @Inject constructor(private val userLocalDataSource: Us
         return userLocalDataSource.setUserLogin(isLogin)
     }
 
-    override suspend fun getProfileData(token: String): Resource<GetProfileResponse>{
+    override suspend fun setUserToken(isToken: String) {
+        return userLocalDataSource.setUserToken(isToken)
+    }
+
+    override suspend fun SaveUserToken(isToken: String) {
+        return userLocalDataSource.SaveUserToken(isToken)
+    }
+
+    override suspend fun GetProfileData(token:String): Resource<GetUserProfileResponse>{
         return proceed {
             dataSource.getProfile(token)
         }
     }
 
-    override suspend fun putProfileData(token: String): Resource<UpdateProfileResponse>{
+    override suspend fun PutProfileData(token: String): Resource<UpdateProfileResponse>{
         return proceed {
             dataSource.putProfile(token)
         }

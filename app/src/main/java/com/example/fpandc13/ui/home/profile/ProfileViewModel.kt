@@ -5,7 +5,10 @@ import com.example.fpandc13.data.local.preference.UserDataStoreManager
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
 import com.example.fpandc13.data.network.models.auth.profile.get.GetProfileResponse
+import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
+import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
+import com.example.fpandc13.data.network.models.auth.verify.VerifyResponse
 import com.example.fpandc13.data.repository.AuthRepository
 import com.example.fpandc13.data.repository.UserRepository
 import com.example.fpandc13.wrapper.Resource
@@ -17,13 +20,19 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreManager , private val userRepository: UserRepository , private val AuthRepository: AuthRepository) : ViewModel() {
 
-    private var _ProfileResponse = MutableLiveData<Resource<GetProfileResponse>>()
-    val getProfileUserResponse: LiveData<Resource<GetProfileResponse>> get() = _ProfileResponse
+    private var _ProfileResponse = MutableLiveData<Resource<GetUserProfileResponse>>()
+    val GetProfileUserResponse: LiveData<Resource<GetUserProfileResponse>> get() = _ProfileResponse
     private var _ProfilePutResponse = MutableLiveData<Resource<UpdateProfileResponse>>()
-    val putProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _ProfilePutResponse
+    val PutProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _ProfilePutResponse
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
     val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
 
+    private val _user: MutableLiveData<GetUserProfileResponse> = MutableLiveData()
+    val user: LiveData<GetUserProfileResponse?> get() = _user
+
+    suspend fun GetProfile(token: String) {
+        userRepository.GetProfileData(token)
+    }
     fun statusLogin(isLogin: Boolean) {
         viewModelScope.launch {
             dataStoreManager.statusLogin(isLogin)
@@ -36,18 +45,18 @@ class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreMa
 
     fun GetProfileUser(token : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val profileGet = userRepository.getProfileData(token)
+            val ProfileGet = userRepository.GetProfileData(token)
             viewModelScope.launch(Dispatchers.Main) {
-                _ProfileResponse.postValue(profileGet)
+                _ProfileResponse.postValue(ProfileGet)
             }
         }
     }
 
-    fun putProfileUser(token : String) {
+    fun PutProfileUser(token : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val profilePut = userRepository.putProfileData(token)
+            val ProfilePut = userRepository.PutProfileData(token)
             viewModelScope.launch(Dispatchers.Main) {
-                _ProfilePutResponse.postValue(profilePut)
+                _ProfilePutResponse.postValue(ProfilePut)
             }
         }
     }

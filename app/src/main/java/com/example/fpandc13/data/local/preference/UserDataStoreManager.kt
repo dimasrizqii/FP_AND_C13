@@ -38,15 +38,37 @@ class UserDataStoreManager @Inject constructor(@ApplicationContext private val c
         }
     }
 
-    fun getUsername(): Flow<String> {
-        return context.userDataStore.data.map {
-            it[USERNAME] ?: ""
+    suspend fun GetToken(token: String) {
+        context.userDataStore.edit {
+            it[TOKEN] = token
         }
+    }
+
+    suspend fun removeToken() {
+        context.userDataStore.edit {
+            it.remove(TOKEN)
+        }
+    }
+
+    val getToken: Flow<String> = context.userDataStore.data.map {
+        it[TOKEN] ?: ""
     }
 
     fun getPassword(): Flow<String> {
         return context.userDataStore.data.map {
             it[PASSWORD] ?: ""
+        }
+    }
+
+    fun getToken(): Flow<String> {
+        return context.userDataStore.data.map {
+            it[TOKEN] ?: ""
+        }
+    }
+
+    suspend fun setToken(isToken: String) {
+        context.userDataStore.edit { preferences ->
+            preferences[TOKEN] = isToken
         }
     }
 
@@ -61,6 +83,7 @@ class UserDataStoreManager @Inject constructor(@ApplicationContext private val c
         private const val DATASTORE_NAME = "database"
 
         private val USERNAME = stringPreferencesKey("username_key")
+        private val TOKEN = stringPreferencesKey("token")
         private val PASSWORD = stringPreferencesKey("password_key")
         private val EMAIL = stringPreferencesKey("email_key")
         private val ADDRESS = stringPreferencesKey("address_key")

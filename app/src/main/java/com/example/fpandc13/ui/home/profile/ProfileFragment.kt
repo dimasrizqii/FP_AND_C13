@@ -3,18 +3,20 @@ package com.example.fpandc13.ui.home.profile
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import com.example.fpandc13.R
-import com.example.fpandc13.data.network.models.auth.profile.get.Data
+import com.example.fpandc13.data.network.models.auth.profile.get.profile
+import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
 import com.example.fpandc13.databinding.FragmentProfileBinding
 import com.example.fpandc13.ui.activity.Home.HomeActivity
 import com.example.fpandc13.ui.activity.MainActivity
+import com.example.fpandc13.ui.login.LoginViewModel
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,6 +26,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ProfileViewModel by viewModels()
+    private val UserViewModel : LoginViewModel by viewModels()
 
     private val existUsername = listOf<String>("shawn","peter","raul","mendes")
     private val existName = listOf<String>("shawn","peter","raUL")
@@ -40,6 +43,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
@@ -49,6 +53,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         observeGet()
+        GetProfile()
+
 
         binding.logout.setOnClickListener(){
             toLogOut()
@@ -79,47 +85,57 @@ class ProfileFragment : Fragment() {
     }
 
     private fun GetProfile() {
+        UserViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
+            viewModel.GetProfileUser("Bearer $it")
+        }
+
+        viewModel.user.observe(viewLifecycleOwner) {
+            binding.apply {
+                if (it != null) {
+                    edtUsername.setText("${it.profile?.username.toString()}")
+                    edtEmail.setText("${it.profile?.email.toString()}")
+                    edtAddressy.setText("${it.profile?.address.toString()}")
+                    edtNomor.setText("${it.profile?.phoneNumber.toString()}")
+                }
+            }
+        }
+
         viewModel.postLoginUserResponse.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{
-                    viewModel.GetProfileUser("${it.data?.token}")
+                    val token = "${it.data?.token}"
+                    if (token != ""){
+                        Log.d("TokenResponse", it.data.toString())
+                    }
+
                 }
                 is Resource.Error -> {
-                    Toast.makeText(requireContext(), "Reload Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Reload Gagal : GetProfile", Toast.LENGTH_LONG).show()
                 }
-                else -> {}
-            }
-        }
-        viewModel.getProfileUserResponse.observe(viewLifecycleOwner){
-            when(it){
-                is Resource.Success ->{
-//                  viewModel.GetProfileUser()
+                is Resource.Empty-> {
+                    Toast.makeText(requireContext(), "Field : Empty", Toast.LENGTH_LONG).show()
                 }
-                else -> {}
-            }
-        }
-    }
-    private fun parseFormIntoEntity(token : String): Data {
-        return Data(
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "")
-    }
+
+                else -> {} }
+        }}
 
     private fun observeGet(){
-        viewModel.getProfileUserResponse.observe(viewLifecycleOwner){
+        viewModel.GetProfileUserResponse.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{
-                    Toast.makeText(requireContext(), "${it.data?.data}", Toast.LENGTH_LONG).show()
-                    Log.d("VerifyResponse", it.data.toString())
+                    Log.d("GetUserProfileResponse", it.data.toString())
+                    binding.apply {
+                        edtUsername.setText("${it.data?.profile?.username.toString()}")
+                        edtEmail.setText("${it.data?.profile?.email.toString()}")
+                        edtAddressy.setText("${it.data?.profile?.address.toString()}")
+                        edtNomor.setText("${it.data?.profile?.phoneNumber.toString()}")
+                    }
                 }
                 is Resource.Error -> {
-                    Toast.makeText(requireContext(), "Reload Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Reload Gagal : ObserveGet", Toast.LENGTH_LONG).show()
+                }
+                is Resource.Empty-> {
+                    Toast.makeText(requireContext(), "Field : Empty", Toast.LENGTH_LONG).show()
                 }
                 else -> {}
             }
