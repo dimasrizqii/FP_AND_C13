@@ -91,35 +91,27 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_edit">
 
                     <EditText
-                        android:id="@+id/edtUsername"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="username" />
-
-                    <EditText
-                        android:id="@+id/edtName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/black"
-                        android:text="name" />
-
-                    <EditText
                         android:id="@+id/edtEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:textColor="@color/black"
-                        android:text="email" />
+                        android:hint="Email" />
 
                     <EditText
-                        android:id="@+id/edtBirthday"
+                        android:id="@+id/edtUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:textColor="@color/black"
-                        android:text="birthday" />
+                        android:hint="Username" />
+
+                    <EditText
+                        android:id="@+id/edtAddressy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/black"
+                        android:hint="Address" />
 
                     <EditText
                         android:id="@+id/edtNomor"
@@ -127,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:textColor="@color/black"
-                        android:text="phone" />
+                        android:hint="Phone Number" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnUpdate"

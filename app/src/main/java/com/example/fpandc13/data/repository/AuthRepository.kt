@@ -1,5 +1,6 @@
 package com.example.fpandc13.data.repository
 
+import com.example.fpandc13.data.local.datasource.UserLocalDataSource
 import com.example.fpandc13.data.network.datasource.AuthRemoteDataSource
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
@@ -13,12 +14,17 @@ import javax.inject.Inject
 interface AuthRepository {
 
     suspend fun postRegisterUser(registerRequestBody: RegisterRequestBody): Resource<RegisterResponse>
+    suspend fun setUserToken(isToken: String)
     suspend fun postLoginUser(loginRequestBody: LoginRequestBody): Resource<LoginResponse>
     suspend fun postVerifyUser(verifyRequestBody: VerifyRequestBody): Resource<VerifyResponse>
 }
 
-class AuthRepositoryImpl @Inject constructor(private val dataSource: AuthRemoteDataSource) :
+class AuthRepositoryImpl @Inject constructor(private val userLocalDataSource: UserLocalDataSource, private val dataSource: AuthRemoteDataSource) :
     AuthRepository {
+
+    override suspend fun setUserToken(isToken: String) {
+        return userLocalDataSource.setUserToken(isToken)
+    }
 
 
     override suspend fun postRegisterUser(registerRequestBody: RegisterRequestBody): Resource<RegisterResponse> {

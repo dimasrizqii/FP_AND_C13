@@ -6,6 +6,8 @@ import com.example.fpandc13.data.local.preference.UserDataStoreManager
 import com.example.fpandc13.data.repository.AuthRepository
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
+import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
+import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
 import com.example.fpandc13.data.network.models.auth.verify.VerifyResponse
 import com.example.fpandc13.wrapper.Resource
@@ -19,6 +21,10 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
 
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
     private var _postVerifyUserResponse = MutableLiveData<Resource<VerifyResponse>>()
+    private var _ProfilePutResponse = MutableLiveData<Resource<UpdateProfileResponse>>()
+    private var _ProfileResponse = MutableLiveData<Resource<GetUserProfileResponse>>()
+    val GetProfileUserResponse: LiveData<Resource<GetUserProfileResponse>> get() = _ProfileResponse
+    val PutProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _ProfilePutResponse
     val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
     val postVerifyUserResponse: LiveData<Resource<VerifyResponse>> get() = _postVerifyUserResponse
 
@@ -32,7 +38,7 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
         return dataStoreManager.getEmail().asLiveData()
     }
 
-    fun getPassword(): LiveData<String> {
+    fun setTokeUser(): LiveData<String> {
         return dataStoreManager.getPassword().asLiveData()
     }
 
@@ -40,12 +46,39 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
         return dataStoreManager.getLoginStatus().asLiveData()
     }
 
+    fun SaveUserToken(isToken: String) {
+        viewModelScope.launch {
+            userRepository.SaveUserToken(isToken)
+        }
+    }
+
+    fun getDataStoreToken(): LiveData<String> {
+        return dataStoreManager.getToken.asLiveData()
+    }
 
     fun postLoginUser(loginRequestBody: LoginRequestBody) {
         viewModelScope.launch(Dispatchers.IO) {
             val loginResponse = authRepository.postLoginUser(loginRequestBody)
             viewModelScope.launch(Dispatchers.Main) {
                 _postLoginUserResponse.postValue(loginResponse)
+            }
+        }
+    }
+
+    fun GetProfileUser(token : String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val ProfileGet = userRepository.GetProfileData(token)
+            viewModelScope.launch(Dispatchers.Main) {
+                _ProfileResponse.postValue(ProfileGet)
+            }
+        }
+    }
+
+    fun PutProfileUser(token : String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val ProfilePut = userRepository.PutProfileData(token)
+            viewModelScope.launch(Dispatchers.Main) {
+                _ProfilePutResponse.postValue(ProfilePut)
             }
         }
     }
@@ -60,9 +93,17 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
     }
 
 
+
+
     fun setUserLogin(isLogin: Boolean) {
         viewModelScope.launch {
             userRepository.setUserLogin(isLogin)
+        }
+    }
+
+    fun setUserToken(isToken: String) {
+        viewModelScope.launch {
+            userRepository.setUserToken(isToken)
         }
     }
 

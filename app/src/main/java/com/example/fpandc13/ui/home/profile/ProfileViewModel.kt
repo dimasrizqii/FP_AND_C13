@@ -5,6 +5,7 @@ import com.example.fpandc13.data.local.preference.UserDataStoreManager
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
 import com.example.fpandc13.data.network.models.auth.profile.get.GetProfileResponse
+import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
 import com.example.fpandc13.data.network.models.auth.verify.VerifyResponse
@@ -19,13 +20,19 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreManager , private val userRepository: UserRepository , private val AuthRepository: AuthRepository) : ViewModel() {
 
-    private var _ProfileResponse = MutableLiveData<Resource<GetProfileResponse>>()
-    val GetProfileUserResponse: LiveData<Resource<GetProfileResponse>> get() = _ProfileResponse
+    private var _ProfileResponse = MutableLiveData<Resource<GetUserProfileResponse>>()
+    val GetProfileUserResponse: LiveData<Resource<GetUserProfileResponse>> get() = _ProfileResponse
     private var _ProfilePutResponse = MutableLiveData<Resource<UpdateProfileResponse>>()
     val PutProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _ProfilePutResponse
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
     val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
 
+    private val _user: MutableLiveData<GetUserProfileResponse> = MutableLiveData()
+    val user: LiveData<GetUserProfileResponse?> get() = _user
+
+    suspend fun GetProfile(token: String) {
+        userRepository.GetProfileData(token)
+    }
     fun statusLogin(isLogin: Boolean) {
         viewModelScope.launch {
             dataStoreManager.statusLogin(isLogin)

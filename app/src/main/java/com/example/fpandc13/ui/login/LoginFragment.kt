@@ -14,8 +14,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.FragmentLoginBinding
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
+import com.example.fpandc13.data.network.models.auth.profile.get.Data
+import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
+import com.example.fpandc13.databinding.FragmentProfileBinding
 import com.example.fpandc13.ui.activity.Home.HomeActivity
+import com.example.fpandc13.ui.home.profile.ProfileViewModel
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +29,11 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
+    private var _bindingProfile: FragmentProfileBinding? = null
+    private val bindingProfile get() = _binding!!
+
     private val viewModel: LoginViewModel by viewModels()
+    private val profileViewModel : ProfileViewModel by viewModels()
 
     private val existUsername = listOf("shawn","peter","raul","mendes")
 
@@ -51,7 +59,7 @@ class LoginFragment : Fragment() {
             }
         }
         observeVerify()
-        observeData()
+        observeDataLogin()
 
         binding.tvCreateAccount.setOnClickListener { openRegister() }
         binding.btnLogin.setOnClickListener (){
@@ -69,24 +77,42 @@ class LoginFragment : Fragment() {
                         val password = binding.etPasswordLogin.text.toString().trim()
                         val token = "${it.data?.token}"
 
+
+
                         binding.etEmailLogin.isEnabled = false
                         binding.etPasswordLogin.isEnabled = false
 
+                        if (token != ""){
+                            //ini untuk set tokennya ke datastore
+                            viewModel.setUserToken(token)
+                            viewModel.SaveUserToken(token)
+//                            //ini kemarin nyoba authorization langsung pake token yang aku ambil dari val token
+//                            viewModel.GetProfileUser("Bearer"+" "+token)
+                            Toast.makeText(requireContext(), "Token Set", Toast.LENGTH_LONG).show()
+
+
+                        } else {
+                            Toast.makeText(requireContext(), "token gagal di set", Toast.LENGTH_LONG).show()
+                        }
+
                         viewModel.postVerifyUser(parseFormIntoEntityVerify(email,password,token))
+
                     }
 
                     else -> {} }
-            }
-    }
+            }}
+
 
     private fun loginUser() {
         if (validateInput()) {
+
             val email = binding.etEmailLogin.text.toString().trim()
             val password = binding.etPasswordLogin.text.toString().trim()
 
             binding.etEmailLogin.isEnabled = false
             binding.etPasswordLogin.isEnabled = false
             viewModel.postLoginUser(parseFormIntoEntity(email, password))
+
         }
     }
 
@@ -100,19 +126,22 @@ class LoginFragment : Fragment() {
                 is Resource.Error -> {
                     Toast.makeText(requireContext(), "Verifikasi Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
                 }
+                is Resource.Empty -> {
+                    Toast.makeText(requireContext(), "Verifikasi Gagal : Kosong", Toast.LENGTH_LONG).show()
+                }
                 else -> {}
             }
-
         }
+
     }
 
-    private fun observeData() {
+    private fun observeDataLogin() {
         viewModel.postLoginUserResponse.observe(viewLifecycleOwner) {
             binding.etEmailLogin.isEnabled = true
             binding.etPasswordLogin.isEnabled = true
             when (it) {
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), " ${it.data?.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "${it.data?.message}", Toast.LENGTH_LONG).show()
                     Log.d("loginResponse", it.data.toString())
                     viewModel.statusLogin(true)
                     navigateToHome()
@@ -136,6 +165,46 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun observeStatus(){
+        viewModel.PutProfileUserResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+                    val status = "${it.data?.status}".equals("success").toString()
+                    Toast.makeText(requireContext(), "${it.data?.status}", Toast.LENGTH_LONG).show()
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_LONG).show()
+
+                }
+                is Resource.Empty -> {
+                    Toast.makeText(requireContext(), "Null", Toast.LENGTH_LONG).show()
+
+                }
+                else -> {}
+            }
+        }
+        viewModel.GetProfileUserResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+                    Toast.makeText(requireContext(), "${it.data?.profile}", Toast.LENGTH_LONG).show()
+                    Log.d("GetResponse", it.data.toString())
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Error2", Toast.LENGTH_LONG).show()
+
+                }
+                is Resource.Empty -> {
+                    Toast.makeText(requireContext(), "Null2", Toast.LENGTH_LONG).show()
+
+                }
+
+                else -> {}
+            }
+
+        }
+    }
+
+
     private fun navigateToHome() {
         viewModel.setUserLogin(true)
         activity?.let { it ->
@@ -151,6 +220,9 @@ class LoginFragment : Fragment() {
     private fun parseFormIntoEntityVerify(email: String, password: String, token : String): VerifyRequestBody{
         return VerifyRequestBody(email,password,token)
     }
+//    private fun parseFormIntoEntityStatus(data: Data): UpdateProfileResponse{
+//        return UpdateProfileResponse()
+//    }
 
     private fun validateInput(): Boolean {
         var isValid = true
