@@ -50,9 +50,6 @@ class AuthRepositoryImpl @Inject constructor(private val userLocalDataSource: Us
             Resource.Success(coroutines.invoke())
         } catch (e: Exception) {
             Resource.Error(e, e.message)
-        }/* catch (httpE: HttpException) {
-            val response = httpE.response()?.errorBody()?.string()
-            Resource.Error(httpE, httpE.response()?.message())
-        }*/
+        }
     }
 }
