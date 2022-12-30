@@ -282,16 +282,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nomor Telp / HP"
+                            android:text="NIK / No ID"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/inputTelepon"
+                            android:id="@+id/inputNik"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:backgroundTint="@color/primary"
-                            android:hint="Masukan nomor telepon"
+                            android:hint="Masukan nomor ID"
                             android:imeOptions="actionDone"
                             android:inputType="number"
                             android:maxLength="12"

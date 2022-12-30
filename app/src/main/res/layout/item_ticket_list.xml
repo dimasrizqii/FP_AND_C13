@@ -10,7 +10,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="215dp"
+        android:layout_height="250dp"
         android:layout_margin="5dp"
         android:layout_marginTop="5dp">
 
@@ -61,8 +61,8 @@
 
             <ImageView
                 android:id="@+id/arrow"
-                android:layout_width="41dp"
-                android:layout_height="23dp"
+                android:layout_width="40dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_arrow_foreground"
                 app:tint="@color/black"
@@ -84,6 +84,7 @@
                 android:id="@+id/dateDepEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="23dp"
+                android:layout_marginTop="8dp"
                 android:text="Jumat, 23 Desember 2022"
                 android:textColor="@color/black"
                 android:textSize="12sp"
@@ -95,6 +96,7 @@
                 android:id="@+id/timeDep"
                 android:layout_width="40dp"
                 android:layout_height="18dp"
+                android:layout_marginTop="8dp"
                 android:text="13 : 00"
                 android:textColor="@color/black"
                 android:textSize="12sp"
@@ -129,25 +131,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="23dp"
                 android:text="Durasi : 1j 30mnt"
+                android:layout_marginTop="8dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/timeAriv"
                 app:layout_constraintTop_toBottomOf="@+id/timeAriv" />
 
+
             <ImageButton
                 android:id="@+id/btnFavorit"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="20dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/ic_star_foreground"
                 android:visibility="visible"
                 app:backgroundTint="#002ECADD"
                 app:layout_constraintTop_toBottomOf="@+id/durasi"
-                tools:layout_editor_absoluteX="5dp" />
-
+                tools:layout_editor_absoluteX="16dp" />
 
             <TextView
                 android:id="@+id/price"
@@ -158,8 +161,8 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="228dp"
-                tools:layout_editor_absoluteY="100dp" />
+                tools:layout_editor_absoluteX="227dp"
+                tools:layout_editor_absoluteY="114dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPilih"
@@ -167,6 +170,8 @@
                 android:layout_width="163dp"
                 android:layout_height="43dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/login_button_bk"
                 android:text="Pilih Pergi"
                 app:cornerRadius="20dp"
