@@ -22,6 +22,7 @@ object NetworkModule {
 
     const val BASE_URL = "https://final-be-project-aeroplane-production.up.railway.app/"
 
+
     @Singleton
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {

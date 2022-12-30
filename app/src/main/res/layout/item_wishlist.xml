@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:id="@+id/item_wishlist"
-    tools:ignore="all">
+    android:id="@+id/item_ticket_list">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -44,7 +43,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.904"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/DepartureText"
@@ -56,29 +55,44 @@
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/arrow"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appLogo"
-                tools:layout_editor_absoluteX="16dp" />
+                app:layout_constraintVertical_bias="0.0" />
+
 
             <ImageView
                 android:id="@+id/arrow"
                 android:layout_width="41dp"
                 android:layout_height="23dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="32dp"
                 android:src="@drawable/ic_arrow_foreground"
-                app:tint="@color/black"
-                tools:layout_editor_absoluteX="96dp"
-                tools:layout_editor_absoluteY="33dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.274"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvKelas"
+                app:layout_constraintVertical_bias="0.006"
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/ArrivalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
                 android:text="(SBY) Surabaya"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="137dp"
-                tools:layout_editor_absoluteY="33dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/arrow"
+                app:layout_constraintTop_toBottomOf="@+id/tvKelas"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/dateDepEdit"
@@ -88,8 +102,12 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/DepartureText"
-                app:layout_constraintTop_toBottomOf="@+id/arrow" />
+                app:layout_constraintTop_toBottomOf="@+id/arrow"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/timeDep"
@@ -99,17 +117,24 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/dateDepEdit"
-                app:layout_constraintTop_toBottomOf="@+id/dateDepEdit" />
+                app:layout_constraintTop_toBottomOf="@+id/dateDepEdit"
+                app:layout_constraintVertical_bias="0.033" />
 
             <ImageView
                 android:id="@+id/arrowDown"
                 android:layout_width="32dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_arrow_down_foreground"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/timeDep"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/timeDep"
                 app:layout_constraintTop_toBottomOf="@+id/timeDep"
+                app:layout_constraintVertical_bias="0.031"
                 app:tint="@color/black" />
 
             <TextView
@@ -120,20 +145,27 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/timeDep"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/timeDep"
-                app:layout_constraintTop_toBottomOf="@+id/arrowDown" />
+                app:layout_constraintTop_toBottomOf="@+id/arrowDown"
+                app:layout_constraintVertical_bias="0.014" />
 
             <TextView
-                android:id="@+id/durasi"
+                android:id="@+id/bandara"
                 android:layout_width="wrap_content"
                 android:layout_height="23dp"
-                android:text="Durasi : 1j 30mnt"
+                android:text="Soekarno Hatta International Airport"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/timeAriv"
-                app:layout_constraintTop_toBottomOf="@+id/timeAriv" />
+                app:layout_constraintTop_toBottomOf="@+id/timeAriv"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
                 android:id="@+id/btnFavorit"
@@ -141,38 +173,48 @@
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="16dp"
                 android:src="@drawable/ic_star_full_foreground"
                 android:visibility="visible"
                 app:backgroundTint="#002ECADD"
-                app:layout_constraintTop_toBottomOf="@+id/durasi"
-                tools:layout_editor_absoluteX="5dp" />
-
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appLogo"
+                app:layout_constraintVertical_bias="0.937" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="145dp"
-                android:layout_height="44dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="80dp"
                 android:gravity="end"
                 android:text="Rp.1.517.550"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="228dp"
-                tools:layout_editor_absoluteY="100dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.922"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvKelas"
+                app:layout_constraintVertical_bias="0.046" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPilih"
                 style="@style/loginButton"
                 android:layout_width="163dp"
-                android:layout_height="46dp"
+                android:layout_height="43dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/login_button_bk"
-
-                android:text="Pilih Pergi"
+                android:text="Book Now"
                 app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/price"
-                app:layout_constraintTop_toBottomOf="@+id/price" />
+                app:layout_constraintTop_toBottomOf="@+id/price"
+                app:layout_constraintVertical_bias="0.31" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

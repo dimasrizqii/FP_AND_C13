@@ -14,8 +14,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.FragmentLoginBinding
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
-import com.example.fpandc13.data.network.models.auth.profile.get.Data
-import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
 import com.example.fpandc13.databinding.FragmentProfileBinding
 import com.example.fpandc13.ui.activity.Home.HomeActivity
@@ -132,7 +130,6 @@ class LoginFragment : Fragment() {
                 else -> {}
             }
         }
-
     }
 
     private fun observeDataLogin() {

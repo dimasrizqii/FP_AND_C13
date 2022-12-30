@@ -45,15 +45,6 @@ class RegisterFragment : Fragment() {
         findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
     }
 
-    private fun setOnClickListener() {
-        binding.btnRegister.setOnClickListener {
-            registerUser()
-        }
-        binding.tvHaveAccount.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-        }
-    }
-
     private fun registerUser() {
         if (validateInput()) {
             observeData()
@@ -61,9 +52,9 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun registerUser(email: String, password: String) {
-        viewModel.postRegisterUser(RegisterRequestBody(email = email, password = password))
-        Log.d("register", RegisterRequestBody(email = email, password = password).toString())
+    private fun registerUser(firstName : String ,lastName : String ,email: String,username: String, password: String, address: String, phone: String) {
+        viewModel.postRegisterUser(RegisterRequestBody(firstName = firstName, lastName = lastName,email = email,username = username, password = password, address = address, phoneNumber = phone ))
+        Log.d("register", RegisterRequestBody(firstName = firstName, lastName = lastName,email = email,username = username, password = password, address = address, phoneNumber = phone).toString())
     }
 
     private fun observeData() {
@@ -76,7 +67,9 @@ class RegisterFragment : Fragment() {
                         Toast.makeText(requireContext(), "Register User Success, Please Login", Toast.LENGTH_SHORT).show()
                         Log.d("registerresponse", it.data?.message.toString())
                     }
-
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Register Gagal Silahkan Periksa Jaringan Internet Anda", Toast.LENGTH_LONG).show()
                 }
                 else -> {}
             }
@@ -85,17 +78,25 @@ class RegisterFragment : Fragment() {
     }
 
     private fun applyRegister() {
+        val firstName = binding.etFirstRegister.text.toString()
+        val lastName = binding.etLastRegister.text.toString()
         val email = binding.etEmailRegister.text.toString()
+        val username = binding.etUsernameRegister.text.toString()
         val password = binding.etPasswordRegister.text.toString()
+        val address = binding.etAddressRegister.text.toString()
+        val phone = binding.etPhoneRegister.text.toString()
         binding.btnRegister.setOnClickListener {
-            registerUser(email, password)
+            registerUser(firstName,lastName,email,username,password,address,phone)
         }
     }
 
     private fun validateInput(): Boolean {
         var isValid = true
         val email = binding.etEmailRegister.text.toString().trim()
+        val username = binding.etUsernameRegister.text.toString().trim()
         val password = binding.etPasswordRegister.text.toString().trim()
+        val address = binding.etAddressRegister.text.toString().trim()
+        val phone = binding.etPhoneRegister.text.toString().trim()
 
 
         if (email.isEmpty()) {
@@ -104,11 +105,26 @@ class RegisterFragment : Fragment() {
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             isValid = false
-            binding.etPasswordRegister.error = "Invalid email"
+            binding.etEmailRegister.error = "Invalid email"
         }
         if (password.isEmpty()) {
             isValid = false
             Toast.makeText(requireContext(), "Password must not be empty", Toast.LENGTH_SHORT)
+                .show()
+        }
+        if (username.isEmpty()) {
+            isValid = false
+            Toast.makeText(requireContext(), "Username must not be empty", Toast.LENGTH_SHORT)
+                .show()
+        }
+        if (address.isEmpty()) {
+            isValid = false
+            Toast.makeText(requireContext(), "Address must not be empty", Toast.LENGTH_SHORT)
+                .show()
+        }
+        if (phone.isEmpty()) {
+            isValid = false
+            Toast.makeText(requireContext(), "Phone Number must not be empty", Toast.LENGTH_SHORT)
                 .show()
         }
         if (password.length < 6) {

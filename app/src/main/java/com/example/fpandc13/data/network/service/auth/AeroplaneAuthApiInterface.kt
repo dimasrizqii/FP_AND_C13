@@ -3,11 +3,14 @@ package com.example.fpandc13.data.network.service.auth
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
 import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
+import com.example.fpandc13.data.network.models.auth.profile.get.profile
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody
 import com.example.fpandc13.data.network.models.auth.register.RegisterResponse
 import com.example.fpandc13.data.network.models.auth.verify.VerifyRequestBody
 import com.example.fpandc13.data.network.models.auth.verify.VerifyResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -33,14 +36,16 @@ interface AeroplaneAuthApiInterface {
         @Header("Authorization") token: String
     ): GetUserProfileResponse
 
-//    @GET("api/auth/profile")
-//    fun getProfileUser(
-//        @Header("Authorization") token: String ): Call<GetUserProfileResponse?>?
-
-
-    @POST("refreshToken")
-    fun refreshToken(refreshToken: String):
-            Call<GetUserProfileResponse>
+    @Multipart
+    @PUT("api/user/profile")
+    fun updateUser(
+        @Part("firstName") firstName: RequestBody,
+        @Part("lastName") lastName: RequestBody,
+        @Part("username") username: RequestBody,
+        @Part("phone_number") phone_number: RequestBody,
+        @Part("address") address: RequestBody,
+        @Part image: MultipartBody.Part ,
+        @Header("Authorization") token: String): Call <profile>
 
     @GET("api/auth/profile")
     suspend fun getProfile(token : String): GetUserProfileResponse

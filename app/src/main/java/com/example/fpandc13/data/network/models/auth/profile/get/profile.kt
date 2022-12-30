@@ -4,6 +4,7 @@ package com.example.fpandc13.data.network.models.auth.profile.get
 import com.google.gson.annotations.SerializedName
 
 data class profile(
+
     @SerializedName("address")
     val address: String?,
     @SerializedName("country_code")
