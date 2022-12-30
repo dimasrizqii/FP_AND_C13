@@ -5,7 +5,11 @@
       <map>
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable-v24/background_oval.xml" value="0.124" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable-v24/background_rounded.xml" value="0.124" />
+        <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable-v24/ic_cart.xml" value="0.124" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/ic_arrow_foreground.xml" value="0.124" />
+        <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.124" />
+        <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/ic_notif_background.xml" value="0.124" />
+        <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/ic_notif_foreground.xml" value="0.124" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/view_bg.xml" value="0.124" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/activity_home.xml" value="0.15" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/activity_main.xml" value="0.16485507246376813" />
@@ -28,7 +32,7 @@
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_notifikasi.xml" value="0.33" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_ticket_list.xml" value="0.33" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_wishlist.xml" value="0.25" />
-        <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/partial_dashboard.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/partial_dashboard.xml" value="0.25" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/menu/another_menu.xml" value="0.18796296296296297" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/menu/bottom_menu.xml" value="0.18796296296296297" />
       </map>

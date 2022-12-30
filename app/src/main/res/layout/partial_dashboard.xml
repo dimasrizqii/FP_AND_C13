@@ -70,7 +70,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:background="@drawable/login_button_bk"
-        android:src="@drawable/ic_baseline_airplane_ticket_24"
+        android:src="@drawable/ic_notification"
         app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Refund"
+        android:text="Notif"
         android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="@+id/imageButton4"
         app:layout_constraintStart_toStartOf="@+id/imageButton4"
