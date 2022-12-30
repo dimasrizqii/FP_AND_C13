@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fpandc13.R
 import com.example.fpandc13.adapter.TicketAdapter
@@ -17,10 +16,6 @@ import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterf
 import com.example.fpandc13.databinding.FragmentTicketBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_ticket.*
-import kotlinx.android.synthetic.main.fragment_ticket.view.*
-import java.util.*
-
-
 
 
 @AndroidEntryPoint
@@ -52,11 +47,6 @@ class TicketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val llm = LinearLayoutManager(this@TicketFragment.context)
-        llm.orientation = LinearLayoutManager.VERTICAL
-        binding.rvTicket.setLayoutManager(llm)
-        binding.rvTicket.setAdapter(adapter)
-
         viewModel.getTicket()
         initList()
         observeQueryResult()
@@ -73,6 +63,10 @@ class TicketFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner) { result ->
             showTicketList(result.ticket)
             Log.d(TAG, "Fragment -> ${result.ticket}")
+        }
+        viewModel.LiveDataTicket.observe(viewLifecycleOwner) { result ->
+            showTicketList(result)
+            Log.d(TAG, "Fragment -> $result")
         }
     }
 

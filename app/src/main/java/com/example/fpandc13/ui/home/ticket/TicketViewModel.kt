@@ -26,15 +26,12 @@ class TicketViewModel @Inject constructor( private val ApiHelper: AeroplaneTicke
         getTicket()
     }
 
-    private val _ticket = MutableLiveData<List<Ticket>?>()
-    val LiveDataTicket: LiveData<List<Ticket>?> = _ticket
+    private val _ticket = MutableLiveData<List<Ticket>>()
+    val LiveDataTicket: LiveData<List<Ticket>> = _ticket
     private val _ticketResponse = MutableLiveData<TicketDetailResponse>()
     val DataTicket: LiveData<TicketDetailResponse> = _ticketResponse
     private val _state = MutableLiveData(TicketState())
     val state: LiveData<TicketState> = _state
-
-
-
 
 
     fun getTicket(){

@@ -19,10 +19,10 @@ class TicketAdapter (private val onClick: (Ticket) -> Unit) :
             binding.apply {
                 binding.price.text = item?.price.toString()
                 binding.bandara.text = item?.airport?.airportName
-//                binding.timeAriv.text = item?.arrivalDate
-//                binding.timeDep.text = item?.departureDate
-//                binding.dateDepEdit.text = item?.departureDate
-//                binding.tvKelas.text = item?.classX
+                binding.timeAriv.text = item?.arrivalDate
+                binding.timeDep.text = item?.departureDate
+                binding.dateDepEdit.text = item?.departureDate
+                binding.tvKelas.text = item?.classX
 
                 root.setOnClickListener { onClick(item) }
             }

@@ -37,7 +37,7 @@ interface AeroplaneAuthApiInterface {
     ): GetUserProfileResponse
 
     @Multipart
-    @PUT("api/user/profile")
+    @PUT("api/auth/profile")
     fun updateUser(
         @Part("firstName") firstName: RequestBody,
         @Part("lastName") lastName: RequestBody,
