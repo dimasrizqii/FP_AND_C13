@@ -10,7 +10,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="28dp"
         android:background="@drawable/login_button_bk"
-        android:src="@drawable/ic_transfer"
+        android:src="@drawable/ic_about_foreground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/primaryTextColor"
         android:layout_marginTop="8dp"
-        android:text="Schedule"
+        android:text="About"
         app:layout_constraintEnd_toEndOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="@+id/imageButton"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
@@ -70,7 +70,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="30dp"
         android:background="@drawable/login_button_bk"
-        android:src="@drawable/ic_baseline_airplane_ticket_24"
+        android:src="@drawable/ic_notification"
         app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,29 +78,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Refund"
+        android:text="Notif"
         android:textColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="@+id/imageButton4"
         app:layout_constraintStart_toStartOf="@+id/imageButton4"
         app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
 
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="30dp"
-        android:background="@drawable/login_button_bk"
-        android:src="@drawable/ic_baseline_history_24"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="History"
-        android:textColor="@color/primaryTextColor"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton5"
-        app:layout_constraintStart_toStartOf="@+id/imageButton5"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
