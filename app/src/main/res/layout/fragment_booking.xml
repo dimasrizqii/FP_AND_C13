@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#D6D6D6"
-    tools:context=".ui.home.ticket.BookingFragment"
+    tools:context=".ui.home.booking.BookingFragment"
     tools:ignore="all">
 
     <com.google.android.material.appbar.AppBarLayout
