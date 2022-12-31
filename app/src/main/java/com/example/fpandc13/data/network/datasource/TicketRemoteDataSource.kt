@@ -12,7 +12,7 @@ import javax.inject.Inject
 interface TicketRemoteDataSource {
     suspend fun listTicket(): Call<TicketDetailResponse>
     suspend fun searchTicket(searchTicketRequestBody: SearchTicketRequestBody): SearchTicketResponse
-    suspend fun getTicket(id: Int?): GetTicketResponse
+    suspend fun getTicket(id: Int?): TicketDetailResponse
 }
 
 class TicketRemoteDataSourceImpl @Inject constructor(private val apiService: AeroplaneTicketApiInterface) :
@@ -26,7 +26,7 @@ class TicketRemoteDataSourceImpl @Inject constructor(private val apiService: Aer
         return apiService.searchTicket(searchTicketRequestBody)
     }
 
-    override suspend fun getTicket(id: Int?): GetTicketResponse {
+    override suspend fun getTicket(id: Int?): TicketDetailResponse {
         return apiService.getTicket(id)
     }
 

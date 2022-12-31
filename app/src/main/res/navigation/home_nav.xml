@@ -36,5 +36,17 @@
         <action
             android:id="@+id/action_ticketFragment_to_historyFragment"
             app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_ticketFragment_to_dataPassengerFragment"
+            app:destination="@id/dataPassengerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataPassengerFragment"
+        android:name="com.example.fpandc13.ui.home.datapassenger.DataPassengerFragment"
+        android:label="fragment_data_passenger"
+        tools:layout="@layout/fragment_data_passenger" >
+        <argument
+            android:name="TicketData"
+            app:argType="com.example.fpandc13.data.network.models.ticket.list.detail.Ticket" />
     </fragment>
 </navigation>

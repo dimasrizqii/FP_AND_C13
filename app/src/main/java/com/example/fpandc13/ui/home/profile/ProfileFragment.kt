@@ -109,15 +109,15 @@ class ProfileFragment : Fragment() {
 
         binding.btnUpdate.setOnClickListener {
 
-            val firstName = binding.etFirstRegister.text.toString().trim()
+            val firstName = binding.edtFirtsName.text.toString().trim()
                 .toRequestBody("multipart/form-data".toMediaType())
-            val lastName = binding.etLastRegister.text.toString().trim()
+            val lastName = binding.edtLastName.text.toString().trim()
                 .toRequestBody("multipart/form-data".toMediaType())
-            val username = binding.etUsernameRegister.text.toString().trim()
+            val username = binding.edtUsername.text.toString().trim()
                 .toRequestBody("multipart/form-data".toMediaType())
-            val address = binding.etAddressRegister.text.toString().trim()
+            val address = binding.edtAddress.text.toString().trim()
                 .toRequestBody("multipart/form-data".toMediaType())
-            val phone = binding.etPhoneRegister.text.toString().trim()
+            val phone = binding.edtNomor.text.toString().trim()
                 .toRequestBody("multipart/form-data".toMediaType())
             UserViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
                 viewModel.updateUser(firstName,lastName,username,phone,address,imageMultiPart!!,"Bearer $it")
@@ -128,11 +128,11 @@ class ProfileFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {
-                    etFirstRegister.setText(it.profile?.firstName)
-                    etLastRegister.setText(it.profile?.lastName)
-                    etUsernameRegister.setText(it.profile?.username)
-                    etPhoneRegister.setText(it.profile?.phoneNumber)
-                    etAddressRegister.setText(it.profile?.address)
+                    edtFirtsName.setText(it.profile?.firstName)
+                    edtLastName.setText(it.profile?.lastName)
+                    edtUsername.setText(it.profile?.username)
+                    edtNomor.setText(it.profile?.phoneNumber)
+                    edtAddress.setText(it.profile?.address)
                 }
             }
         }
@@ -148,11 +148,11 @@ class ProfileFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {
-                    etFirstRegister.setText("${it.profile?.firstName.toString()}")
-                    etLastRegister.setText("${it.profile?.lastName.toString()}")
-                    etUsernameRegister.setText("${it.profile?.username.toString()}")
-                    etAddressRegister.setText("${it.profile?.address.toString()}")
-                    etPhoneRegister.setText("${it.profile?.phoneNumber.toString()}")
+                    edtFirtsName.setText("${it.profile?.firstName.toString()}")
+                    edtLastName.setText("${it.profile?.lastName.toString()}")
+                    edtUsername.setText("${it.profile?.username.toString()}")
+                    edtAddress.setText("${it.profile?.address.toString()}")
+                    edtNomor.setText("${it.profile?.phoneNumber.toString()}")
                     Glide.with(requireContext())
                         .load(it.profile?.photo)
                         .circleCrop()
@@ -186,11 +186,12 @@ class ProfileFragment : Fragment() {
                 is Resource.Success ->{
                     Log.d("GetUserProfileResponse", it.data.toString())
                     binding.apply {
-                        etFirstRegister.setText("${it.data?.profile?.firstName.toString()}")
-                        etLastRegister.setText("${it.data?.profile?.lastName.toString()}")
-                        etUsernameRegister.setText("${it.data?.profile?.username.toString()}")
-                        etAddressRegister.setText("${it.data?.profile?.address.toString()}")
-                        etPhoneRegister.setText("${it.data?.profile?.phoneNumber.toString()}")
+                        edtFirtsName.setText("${it.data?.profile?.firstName.toString()}")
+                        edtLastName.setText("${it.data?.profile?.lastName.toString()}")
+                        edtUsername.setText("${it.data?.profile?.username.toString()}")
+                        edtAddress.setText("${it.data?.profile?.address.toString()}")
+                        edtNomor.setText("${it.data?.profile?.phoneNumber.toString()}")
+
                         Glide.with(requireContext())
                             .load(it.data?.profile?.photo)
                             .circleCrop()

@@ -10,36 +10,33 @@ import com.example.fpandc13.wrapper.Resource
 import javax.inject.Inject
 
 interface TicketRepository {
-//    suspend fun listTicket(): Resource<TicketDetailResponse>
-//    suspend fun getTicket(id: Int): Resource<TicketDetailResponse>
-//    suspend fun searchTicket(searchTicketRequestBody: SearchTicketRequestBody): Resource<SearchTicketResponse>
+    suspend fun getTicket(id: Int): Resource<TicketDetailResponse>
+    suspend fun searchTicket(searchTicketRequestBody: SearchTicketRequestBody): Resource<SearchTicketResponse>
 }
 
 class TicketRepositoryImpl @Inject constructor(private val dataSource: TicketRemoteDataSource) :
     TicketRepository {
-//    override suspend fun listTicket(): Resource<TicketDetailResponse> {
-//        return proceed {
-//            dataSource.listTicket()
-//        }
-//    }
-//
-//    override suspend fun getTicket(id: Int): Resource<GetTicketResponse> {
-//        return proceed {
-//            dataSource.getTicket(id)
-//        }
-//    }
-//
-//    override suspend fun searchTicket(searchTicketRequestBody: SearchTicketRequestBody): Resource<SearchTicketResponse> {
-//        return proceed {
-//            dataSource.searchTicket(searchTicketRequestBody)
-//        }
-//    }
-//
-//    private suspend fun <T> proceed(coroutines: suspend () -> T): Resource<T> {
-//        return try {
-//            Resource.Success(coroutines.invoke())
-//        } catch (e: Exception) {
-//            Resource.Error(e, e.message)
-//        }
-//    }
+
+
+    suspend fun <T> proceed(coroutines: suspend () -> T): Resource<T> {
+        return try {
+            Resource.Success(coroutines.invoke())
+        } catch (e: Exception) {
+            Resource.Error(e, e.message)
+        }
+    }
+
+
+
+    override suspend fun getTicket(id: Int): Resource<TicketDetailResponse> {
+        return proceed {
+            dataSource.getTicket(id)
+        }
+    }
+
+    override suspend fun searchTicket(searchTicketRequestBody: SearchTicketRequestBody): Resource<SearchTicketResponse> {
+        return proceed {
+            dataSource.searchTicket(searchTicketRequestBody)
+        }
+    }
 }

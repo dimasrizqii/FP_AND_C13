@@ -1,8 +1,11 @@
 package com.example.fpandc13.data.network.models.ticket.list.detail
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Airport(
     @SerializedName("airport_location")
     val airportLocation: String?,
@@ -14,4 +17,4 @@ data class Airport(
     val id: Int?,
     @SerializedName("updatedAt")
     val updatedAt: String?
-)
+) : Parcelable

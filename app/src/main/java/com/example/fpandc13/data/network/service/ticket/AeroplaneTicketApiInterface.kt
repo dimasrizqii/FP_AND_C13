@@ -1,6 +1,7 @@
 package com.example.fpandc13.data.network.service.ticket
 
 import com.example.fpandc13.data.network.models.ticket.get.GetTicketResponse
+import com.example.fpandc13.data.network.models.ticket.get.Ticket
 import com.example.fpandc13.data.network.models.ticket.list.ListTicketResponse
 import com.example.fpandc13.data.network.models.ticket.list.detail.TicketDetailResponse
 import com.example.fpandc13.data.network.models.ticket.search.SearchTicketRequestBody
@@ -23,5 +24,5 @@ interface AeroplaneTicketApiInterface {
     ): SearchTicketResponse
 
     @GET("api/tickets/{id}")
-     fun getTicket(@Path("id") id : Int?): GetTicketResponse
+     fun getTicket(@Path("id") id : Int?): TicketDetailResponse
 }

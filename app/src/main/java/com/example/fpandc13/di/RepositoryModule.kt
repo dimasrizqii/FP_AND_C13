@@ -1,9 +1,6 @@
 package com.example.fpandc13.di
 
-import com.example.fpandc13.data.repository.AuthRepository
-import com.example.fpandc13.data.repository.AuthRepositoryImpl
-import com.example.fpandc13.data.repository.UserRepository
-import com.example.fpandc13.data.repository.UserRepositoryImpl
+import com.example.fpandc13.data.repository.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +15,11 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
+
+    @Binds
+    abstract fun provideTicketRepository(userRepositoryImpl: TicketRepositoryImpl): TicketRepository
+
+    @Binds
+    abstract fun provideBookingRepository(userRepositoryImpl: BookingRepositoryImpl): BookingRepository
+
 }

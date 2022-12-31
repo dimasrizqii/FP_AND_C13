@@ -84,8 +84,7 @@ class LoginFragment : Fragment() {
                             //ini untuk set tokennya ke datastore
                             viewModel.setUserToken(token)
                             viewModel.SaveUserToken(token)
-//                            //ini kemarin nyoba authorization langsung pake token yang aku ambil dari val token
-//                            viewModel.GetProfileUser("Bearer"+" "+token)
+
                             Toast.makeText(requireContext(), "Token Set", Toast.LENGTH_LONG).show()
 
 

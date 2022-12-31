@@ -39,6 +39,7 @@ class RegisterFragment : Fragment() {
 
         binding.tvHaveAccount.setOnClickListener { openLogin() }
         binding.btnRegister.setOnClickListener { registerUser() }
+        observeData()
     }
 
     private fun openLogin() {
@@ -47,7 +48,6 @@ class RegisterFragment : Fragment() {
 
     private fun registerUser() {
         if (validateInput()) {
-            observeData()
             applyRegister()
         }
     }
@@ -85,9 +85,9 @@ class RegisterFragment : Fragment() {
         val password = binding.etPasswordRegister.text.toString()
         val address = binding.etAddressRegister.text.toString()
         val phone = binding.etPhoneRegister.text.toString()
-        binding.btnRegister.setOnClickListener {
-            registerUser(firstName,lastName,email,username,password,address,phone)
-        }
+
+        registerUser(firstName,lastName,email,username,password,address,phone)
+
     }
 
     private fun validateInput(): Boolean {

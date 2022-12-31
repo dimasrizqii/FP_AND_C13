@@ -3,12 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
-//    id 'kotlin-parcelize'
+    id 'kotlin-parcelize'
     id 'kotlin-android'
     id 'dagger.hilt.android.plugin'
 }
 
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdk 32
@@ -119,6 +119,8 @@ dependencies {
 //    implementation 'com.android.support:cardview-v7:26.1.0'
 //    //noinspection GradleCompatible
 //    implementation 'com.android.support:design:26.1.0'
+
+
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
