@@ -23,4 +23,8 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun provideBookingDataSource(userLocalDataSourceImpl: BookingRemoteDataSourceImpl): BookingRemoteDataSource
+
+
+    @Binds
+    abstract fun providePassengerDataSource(userLocalDataSourceImpl: PassengerRemoteDataSourceImpl): PassengerRemoteDataSource
 }

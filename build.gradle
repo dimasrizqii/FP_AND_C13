@@ -3,7 +3,7 @@ buildscript {
     ext {
         room_version = '2.4.3'
         coroutine_version = '1.6.4'
-        navigationVersion = '2.5.1'
+        navigationVersion = '2.5.3'
         ext.hilt_version = '2.42'
     }
 
@@ -16,6 +16,7 @@ buildscript {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion")
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 //        classpath 'com.google.gms:google-services:4.3.14'
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion")
         classpath 'com.android.tools.build:gradle:3.4.3'
     }
 }

@@ -3,6 +3,7 @@ package com.example.fpandc13.ui.activity.Home
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -34,6 +35,23 @@ class HomeActivity : AppCompatActivity() {
         setupSmoothBottomMenu()
         supportActionBar?.hide()
         setupNavigation()
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+
+
+                else -> hideBottomNav(false)
+            }
+        }
+    }
+
+
+    private fun hideBottomNav(hide: Boolean) {
+        if (hide) {
+            binding.bottomBar.visibility = View.GONE
+        } else {
+            binding.bottomBar.visibility = View.VISIBLE
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -100,4 +118,5 @@ class HomeActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
+
 }

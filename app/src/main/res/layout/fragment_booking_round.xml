@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#D6D6D6"
+    android:backgroundTint="@color/cardColor"
     tools:context=".ui.home.booking.BookingRoundFragment"
     tools:ignore="all">
 
@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
-                    android:text="Pesan Tiket"
+                    android:text="Verifikasi Booking"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -53,54 +53,47 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:elevation="0dp">
 
 
-            <Button
-                android:id="@+id/btnOneway"
-                android:layout_width="128dp"
-                android:layout_height="58dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
-                android:text="One Way"
-                app:backgroundTint="@color/primary"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="IDPENERBANGAN"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.069"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <Button
-                android:id="@+id/btnRoundway"
-                android:layout_width="128dp"
-                android:layout_height="58dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:text="Round Way"
-                app:backgroundTint="@color/primary"
-                app:layout_constraintStart_toEndOf="@+id/btnOneway"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteY="0dp" />
-
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="43dp"
                 android:layout_height="46dp"
-                android:layout_marginTop="16dp"
                 android:layout_gravity="start"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="56dp"
                 android:src="@drawable/ic_departure_foreground"
-                tools:layout_editor_absoluteX="5dp"
-                tools:layout_editor_absoluteY="18dp"
-                app:layout_constraintTop_toBottomOf="@+id/btnOneway"/>
+                app:layout_constraintEnd_toStartOf="@+id/berangkat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/berangkat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="56dp"
-                android:layout_marginTop="16dp"
-                android:textSize="15sp"
+                android:layout_marginTop="56dp"
+                android:textColor="@color/black"
                 android:text="Keberangkatan"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnOneway"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/Departureedit"
@@ -121,9 +114,12 @@
                 android:layout_width="42dp"
                 android:layout_height="40dp"
                 android:layout_gravity="end"
+                android:layout_marginTop="104dp"
                 android:src="@drawable/ic_swap_foreground"
-                tools:layout_editor_absoluteX="298dp"
-                tools:layout_editor_absoluteY="120dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.781"
+                app:layout_constraintStart_toEndOf="@+id/Departureedit"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -133,13 +129,14 @@
                 android:layout_marginTop="20dp"
                 android:src="@drawable/ic_arrived_foreground"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                tools:layout_editor_absoluteX="5dp" />
+                tools:layout_editor_absoluteX="9dp" />
 
             <TextView
                 android:id="@+id/tujuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/black"
                 android:text="Tujuan"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="@+id/Departureedit"
@@ -173,42 +170,48 @@
 
 
             <ImageView
+                android:id="@+id/imageView11"
                 android:layout_width="43dp"
                 android:layout_height="46dp"
                 android:layout_gravity="start"
-                android:layout_marginTop="116dp"
+                android:layout_marginTop="112dp"
                 android:src="@drawable/ic_kalender_foreground"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                tools:layout_editor_absoluteX="5dp" />
+                tools:layout_editor_absoluteX="9dp" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
+                android:textColor="@color/black"
                 android:text="Tanggal Keberangkatan"
                 app:layout_constraintStart_toStartOf="@+id/arrivalEdit"
                 app:layout_constraintTop_toBottomOf="@+id/arrivalEdit" />
 
-            <EditText
+
+            <TextView
                 android:id="@+id/dateDepEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rabu, 02/02/2022"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-
             <ImageView
+                android:id="@+id/imageView10"
                 android:layout_width="43dp"
                 android:layout_height="46dp"
                 android:layout_gravity="start"
-                android:layout_marginTop="192dp"
+                android:layout_marginTop="164dp"
                 android:src="@drawable/ic_kalender_foreground"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                tools:layout_editor_absoluteX="5dp" />
+                tools:layout_editor_absoluteX="9dp" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -216,20 +219,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Tanggal Pulang"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="@+id/dateDepEdit"
                 app:layout_constraintTop_toBottomOf="@+id/dateDepEdit" />
 
-            <EditText
+
+            <TextView
                 android:id="@+id/dateRetEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="Jumat, 04/02/2022"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-
 
             <View
                 android:id="@+id/view2"
@@ -247,61 +254,83 @@
                 android:layout_width="43dp"
                 android:layout_height="46dp"
                 android:layout_gravity="start"
-                android:layout_marginTop="296dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/ic_person_foreground"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                tools:layout_editor_absoluteX="5dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.029"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.697" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="60dp"
                 android:text="Penumpang"
+                android:textColor="@color/black"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/dateRetEdit"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
                 app:layout_constraintTop_toBottomOf="@+id/dateRetEdit" />
 
-            <EditText
+            <TextView
                 android:id="@+id/edtPenumpang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="1 Orang"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView9"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/textView10"
+                app:layout_constraintVertical_bias="0.018" />
 
             <ImageView
+                android:id="@+id/imageView9"
                 android:layout_width="43dp"
                 android:layout_height="46dp"
                 android:layout_gravity="start"
-                android:layout_marginStart="140dp"
+                android:layout_marginTop="36dp"
                 android:src="@drawable/ic_chair_foreground"
-                app:layout_constraintStart_toEndOf="@+id/imageView7"
-                tools:layout_editor_absoluteY="436dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.578"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.683" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="64dp"
                 android:text="Kelas"
+                android:textColor="@color/black"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintStart_toEndOf="@+id/imageView9"
                 app:layout_constraintTop_toBottomOf="@+id/dateRetEdit" />
 
-            <EditText
+            <TextView
                 android:id="@+id/tvKelas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ekonomi"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.131"
+                app:layout_constraintStart_toEndOf="@+id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:layout_constraintVertical_bias="0.018" />
 
             <Button
                 android:id="@+id/btnSearch"
@@ -310,11 +339,13 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="35dp"
                 android:layout_marginBottom="35dp"
+                android:text="Bayar"
                 app:backgroundTint="@color/primary"
-                android:text="Cari Tiket"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9"
+                app:layout_constraintVertical_bias="0.717" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

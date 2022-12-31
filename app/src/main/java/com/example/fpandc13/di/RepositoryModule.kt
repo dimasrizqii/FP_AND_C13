@@ -17,9 +17,12 @@ abstract class RepositoryModule {
     abstract fun provideUserRepository(userRepositoryImpl: UserRepositoryImpl): UserRepository
 
     @Binds
-    abstract fun provideTicketRepository(userRepositoryImpl: TicketRepositoryImpl): TicketRepository
+    abstract fun provideTicketRepository(TicketRepositoryImpl: TicketRepositoryImpl): TicketRepository
 
     @Binds
-    abstract fun provideBookingRepository(userRepositoryImpl: BookingRepositoryImpl): BookingRepository
+    abstract fun provideBookingRepository(BookingRepositoryImpl: BookingRepositoryImpl): BookingRepository
+
+    @Binds
+    abstract fun providePassengerRepository(PassengerRepositoryImpl: PassengerRepositoryImpl): PassengerRepository
 
 }

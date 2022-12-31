@@ -1,10 +1,14 @@
 package com.example.fpandc13.data.network.models.auth.profile.get
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class profile(
-
+    @SerializedName("id")
+    val id: Int,
     @SerializedName("address")
     val address: String?,
     @SerializedName("country_code")
@@ -25,4 +29,4 @@ data class profile(
     val role: Int?,
     @SerializedName("username")
     val username: String?
-)
+) : Parcelable

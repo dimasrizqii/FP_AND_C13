@@ -118,6 +118,7 @@ class LoginFragment : Fragment() {
             when(it){
                 is Resource.Success ->{
                     Toast.makeText(requireContext(), "${it.data?.message}", Toast.LENGTH_LONG).show()
+
                     Log.d("VerifyResponse", it.data.toString())
                 }
                 is Resource.Error -> {
@@ -161,44 +162,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun observeStatus(){
-        viewModel.PutProfileUserResponse.observe(viewLifecycleOwner){
-            when(it){
-                is Resource.Success ->{
-                    val status = "${it.data?.status}".equals("success").toString()
-                    Toast.makeText(requireContext(), "${it.data?.status}", Toast.LENGTH_LONG).show()
-                }
-                is Resource.Error -> {
-                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_LONG).show()
 
-                }
-                is Resource.Empty -> {
-                    Toast.makeText(requireContext(), "Null", Toast.LENGTH_LONG).show()
-
-                }
-                else -> {}
-            }
-        }
-        viewModel.GetProfileUserResponse.observe(viewLifecycleOwner){
-            when(it){
-                is Resource.Success ->{
-                    Toast.makeText(requireContext(), "${it.data?.profile}", Toast.LENGTH_LONG).show()
-                    Log.d("GetResponse", it.data.toString())
-                }
-                is Resource.Error -> {
-                    Toast.makeText(requireContext(), "Error2", Toast.LENGTH_LONG).show()
-
-                }
-                is Resource.Empty -> {
-                    Toast.makeText(requireContext(), "Null2", Toast.LENGTH_LONG).show()
-
-                }
-
-                else -> {}
-            }
-
-        }
-    }
 
 
     private fun navigateToHome() {

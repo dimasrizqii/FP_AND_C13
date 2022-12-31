@@ -48,5 +48,20 @@
         <argument
             android:name="TicketData"
             app:argType="com.example.fpandc13.data.network.models.ticket.list.detail.Ticket" />
+        <action
+            android:id="@+id/action_dataPassengerFragment_to_bookingRoundFragment"
+            app:destination="@id/bookingRoundFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingRoundFragment"
+        android:name="com.example.fpandc13.ui.home.booking.BookingRoundFragment"
+        android:label="fragment_booking_round"
+        tools:layout="@layout/fragment_booking_round" >
+        <argument
+            android:name="DataTicket"
+            app:argType="com.example.fpandc13.data.network.models.ticket.list.detail.Ticket" />
+        <action
+            android:id="@+id/action_bookingRoundFragment_to_dataPassengerFragment"
+            app:destination="@id/dataPassengerFragment" />
     </fragment>
 </navigation>

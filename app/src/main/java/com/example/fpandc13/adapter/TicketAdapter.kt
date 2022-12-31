@@ -17,7 +17,7 @@ class TicketAdapter (private val onClick: (Ticket) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Ticket) {
             binding.apply {
-                binding.price.text = item?.price.toString()
+                binding.price.text = "Rp."+item?.price.toString()
                 binding.bandara.text = item?.airport?.airportName
                 binding.timeAriv.text = item?.arrivalDate
                 binding.timeDep.text = item?.departureDate

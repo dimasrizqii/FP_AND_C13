@@ -18,6 +18,7 @@ import com.example.fpandc13.adapter.TicketAdapter
 import com.example.fpandc13.adapter.TicketItemClickListener
 import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
 import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterface
+import com.example.fpandc13.databinding.FragmentLoginBinding
 import com.example.fpandc13.databinding.FragmentTicketBinding
 import com.example.fpandc13.ui.home.datapassenger.DataPassengerFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,9 +32,9 @@ class TicketFragment : Fragment() {
 
 
 
-    private val binding: FragmentTicketBinding by lazy {
-        FragmentTicketBinding.inflate(layoutInflater)
-    }
+    private var _binding: FragmentTicketBinding? = null
+    private val binding get() = _binding!!
+
     private val viewModel: TicketViewModel by viewModels()
     private val adapter: TicketAdapter by lazy { TicketAdapter(::onClicked) }
 
@@ -42,9 +43,8 @@ class TicketFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ticket, container, false)
+            _binding = FragmentTicketBinding.inflate(inflater, container, false)
+            return binding.root
     }
 
 //    private val adapterSearch: SearchAdapter by lazy {
@@ -98,6 +98,8 @@ class TicketFragment : Fragment() {
         binding.rvTicket.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
+
+
 
     private fun onClicked(ticket: Ticket) {
         viewModel.LiveDataTicket.observe(viewLifecycleOwner) { result ->

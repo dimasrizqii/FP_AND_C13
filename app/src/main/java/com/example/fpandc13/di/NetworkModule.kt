@@ -2,6 +2,7 @@ package com.example.fpandc13.di
 
 import com.example.fpandc13.data.network.service.auth.AeroplaneAuthApiInterface
 import com.example.fpandc13.data.network.service.booking.AeroplaneBookingApiInterface
+import com.example.fpandc13.data.network.service.passenger.AeroplanePassengerApiInterface
 import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterface
 import dagger.Module
 import dagger.Provides
@@ -78,4 +79,9 @@ object NetworkModule {
     @Provides
     fun provideBookingApi(retrofit: Retrofit): AeroplaneBookingApiInterface =
         retrofit.create(AeroplaneBookingApiInterface::class.java)
+
+    @Singleton
+    @Provides
+    fun providePassengerApi(retrofit: Retrofit): AeroplanePassengerApiInterface =
+        retrofit.create(AeroplanePassengerApiInterface::class.java)
 }
