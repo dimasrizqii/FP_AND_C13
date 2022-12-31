@@ -8,7 +8,6 @@ import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileR
 import com.example.fpandc13.data.network.models.auth.profile.get.profile
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.service.auth.AeroplaneAuthApiInterface
-import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterface
 import com.example.fpandc13.data.repository.AuthRepository
 import com.example.fpandc13.data.repository.UserRepository
 import com.example.fpandc13.wrapper.Resource
@@ -23,12 +22,12 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreManager , private val userRepository: UserRepository , private val AuthRepository: AuthRepository , private val ApiClient: AeroplaneAuthApiInterface ) : ViewModel() {
+class ProfileViewModel @Inject constructor(private val dataStoreManager: UserDataStoreManager, private val userRepository: UserRepository, private val AuthRepository: AuthRepository, private val ApiClient: AeroplaneAuthApiInterface ) : ViewModel() {
 
-    private var _ProfileResponse = MutableLiveData<Resource<GetUserProfileResponse>>()
-    val GetProfileUserResponse: LiveData<Resource<GetUserProfileResponse>> get() = _ProfileResponse
-    private var _ProfilePutResponse = MutableLiveData<Resource<UpdateProfileResponse>>()
-    val PutProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _ProfilePutResponse
+    private var _profileResponse = MutableLiveData<Resource<GetUserProfileResponse>>()
+    val getProfileUserResponse: LiveData<Resource<GetUserProfileResponse>> get() = _profileResponse
+    private var _profilePutResponse = MutableLiveData<Resource<UpdateProfileResponse>>()
+    val putProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _profilePutResponse
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
     val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
 
@@ -37,8 +36,8 @@ class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreMa
     private val _update: MutableLiveData<profile?> = MutableLiveData()
     val update: LiveData<profile?> get() = _update
 
-    suspend fun GetProfile(token: String) {
-        userRepository.GetProfileData(token)
+    suspend fun getProfile(token: String) {
+        userRepository.getProfileData(token)
     }
     fun statusLogin(isLogin: Boolean) {
         viewModelScope.launch {
@@ -50,11 +49,11 @@ class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreMa
         return dataStoreManager.getLoginStatus().asLiveData()
     }
 
-    fun GetProfileUser(token : String) {
+    fun getProfileUser(token : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val ProfileGet = userRepository.GetProfileData(token)
+            val profileGet = userRepository.getProfileData(token)
             viewModelScope.launch(Dispatchers.Main) {
-                _ProfileResponse.postValue(ProfileGet)
+                _profileResponse.postValue(profileGet)
             }
         }
     }
@@ -88,11 +87,11 @@ class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreMa
             })
     }
 
-    fun PutProfileUser(token : String) {
+    fun putProfileUser(token : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val ProfilePut = userRepository.PutProfileData(token)
+            val profilePut = userRepository.putProfileData(token)
             viewModelScope.launch(Dispatchers.Main) {
-                _ProfilePutResponse.postValue(ProfilePut)
+                _profilePutResponse.postValue(profilePut)
             }
         }
     }

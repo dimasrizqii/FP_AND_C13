@@ -83,9 +83,9 @@ class LoginFragment : Fragment() {
                         if (token != ""){
                             //ini untuk set tokennya ke datastore
                             viewModel.setUserToken(token)
-                            viewModel.SaveUserToken(token)
+                            viewModel.saveUserToken(token)
 //                            //ini kemarin nyoba authorization langsung pake token yang aku ambil dari val token
-//                            viewModel.GetProfileUser("Bearer"+" "+token)
+//                            viewModel.getProfileUser("Bearer"+" "+token)
                             Toast.makeText(requireContext(), "Token Set", Toast.LENGTH_LONG).show()
 
 
@@ -163,7 +163,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun observeStatus(){
-        viewModel.PutProfileUserResponse.observe(viewLifecycleOwner){
+        viewModel.putProfileUserResponse.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{
                     val status = "${it.data?.status}".equals("success").toString()
@@ -180,7 +180,7 @@ class LoginFragment : Fragment() {
                 else -> {}
             }
         }
-        viewModel.GetProfileUserResponse.observe(viewLifecycleOwner){
+        viewModel.getProfileUserResponse.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{
                     Toast.makeText(requireContext(), "${it.data?.profile}", Toast.LENGTH_LONG).show()

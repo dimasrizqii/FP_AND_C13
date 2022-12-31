@@ -21,10 +21,10 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
 
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
     private var _postVerifyUserResponse = MutableLiveData<Resource<VerifyResponse>>()
-    private var _ProfilePutResponse = MutableLiveData<Resource<UpdateProfileResponse>>()
-    private var _ProfileResponse = MutableLiveData<Resource<GetUserProfileResponse>>()
-    val GetProfileUserResponse: LiveData<Resource<GetUserProfileResponse>> get() = _ProfileResponse
-    val PutProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _ProfilePutResponse
+    private var _profilePutResponse = MutableLiveData<Resource<UpdateProfileResponse>>()
+    private var _profileResponse = MutableLiveData<Resource<GetUserProfileResponse>>()
+    val getProfileUserResponse: LiveData<Resource<GetUserProfileResponse>> get() = _profileResponse
+    val putProfileUserResponse: LiveData<Resource<UpdateProfileResponse>> get() = _profilePutResponse
     val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
     val postVerifyUserResponse: LiveData<Resource<VerifyResponse>> get() = _postVerifyUserResponse
 
@@ -46,9 +46,9 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
         return dataStoreManager.getLoginStatus().asLiveData()
     }
 
-    fun SaveUserToken(isToken: String) {
+    fun saveUserToken(isToken: String) {
         viewModelScope.launch {
-            userRepository.SaveUserToken(isToken)
+            userRepository.saveUserToken(isToken)
         }
     }
 
@@ -65,20 +65,20 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
         }
     }
 
-    fun GetProfileUser(token : String) {
+    fun getProfileUser(token : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val ProfileGet = userRepository.GetProfileData(token)
+            val ProfileGet = userRepository.getProfileData(token)
             viewModelScope.launch(Dispatchers.Main) {
-                _ProfileResponse.postValue(ProfileGet)
+                _profileResponse.postValue(ProfileGet)
             }
         }
     }
 
-    fun PutProfileUser(token : String) {
+    fun putProfileUser(token : String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val ProfilePut = userRepository.PutProfileData(token)
+            val ProfilePut = userRepository.putProfileData(token)
             viewModelScope.launch(Dispatchers.Main) {
-                _ProfilePutResponse.postValue(ProfilePut)
+                _profilePutResponse.postValue(ProfilePut)
             }
         }
     }

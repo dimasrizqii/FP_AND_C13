@@ -1,14 +1,14 @@
 package com.example.fpandc13.di
 
 import com.example.fpandc13.data.network.service.auth.AeroplaneAuthApiInterface
+import com.example.fpandc13.data.network.service.booking.AeroplaneBookingApiInterface
+import com.example.fpandc13.data.network.service.passenger.AeroplanePassengerApiInterface
 import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,9 +19,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-
-    const val BASE_URL = "https://final-be-project-aeroplane-production.up.railway.app/"
-
+    private const val BASE_URL = "https://final-be-project-aeroplane-production.up.railway.app/"
 
     @Singleton
     @Provides
@@ -72,4 +70,15 @@ object NetworkModule {
     @Provides
     fun provideTicketApi(retrofit: Retrofit): AeroplaneTicketApiInterface =
         retrofit.create(AeroplaneTicketApiInterface::class.java)
+
+    @Singleton
+    @Provides
+    fun provideBookingApi(retrofit: Retrofit): AeroplaneBookingApiInterface =
+        retrofit.create(AeroplaneBookingApiInterface::class.java)
+
+    @Singleton
+    @Provides
+    fun providePassengerApi(retrofit: Retrofit): AeroplanePassengerApiInterface =
+        retrofit.create(AeroplanePassengerApiInterface::class.java)
+
 }

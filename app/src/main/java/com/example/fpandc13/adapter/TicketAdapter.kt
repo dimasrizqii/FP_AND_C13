@@ -1,12 +1,10 @@
 package com.example.fpandc13.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fpandc13.R
 import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
 import com.example.fpandc13.databinding.ItemTicketListBinding
 

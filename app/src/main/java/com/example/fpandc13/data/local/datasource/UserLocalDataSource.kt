@@ -7,7 +7,7 @@ import javax.inject.Inject
 interface UserLocalDataSource {
     suspend fun setUserLogin(isLogin: Boolean)
     suspend fun setUserToken(isToken: String)
-    suspend fun SaveUserToken(isToken: String)
+    suspend fun saveUserToken(isToken: String)
 
     fun getUserLoginStatus(): Flow<Boolean>
 }
@@ -24,7 +24,7 @@ class UserLocalDataSourceImpl @Inject constructor(
         userDataStore.setToken(isToken)
     }
 
-    override suspend fun SaveUserToken(isToken: String) {
+    override suspend fun saveUserToken(isToken: String) {
         userDataStore.GetToken(isToken)
     }
 
