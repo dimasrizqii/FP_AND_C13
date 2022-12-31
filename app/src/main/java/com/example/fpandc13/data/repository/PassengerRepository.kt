@@ -1,12 +1,6 @@
 package com.example.fpandc13.data.repository
 
-import com.example.fpandc13.data.local.datasource.UserLocalDataSource
-import com.example.fpandc13.data.network.datasource.BookingRemoteDataSource
 import com.example.fpandc13.data.network.datasource.PassengerRemoteDataSource
-import com.example.fpandc13.data.network.models.booking.create.CreateBookingRequestBody
-import com.example.fpandc13.data.network.models.booking.create.CreateBookingResponse
-import com.example.fpandc13.data.network.models.booking.list.ListBookingResponse
-import com.example.fpandc13.data.network.models.booking.listperuser.ListPerUserBookingResponse
 import com.example.fpandc13.data.network.models.passenger.create.CreatePassengerRequestBody
 import com.example.fpandc13.data.network.models.passenger.create.CreatePassengerResponse
 import com.example.fpandc13.data.network.models.passenger.get.GetAPassengerResponse
