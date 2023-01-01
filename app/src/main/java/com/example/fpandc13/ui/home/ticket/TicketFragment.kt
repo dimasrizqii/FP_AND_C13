@@ -8,24 +8,35 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.fpandc13.R
 import com.example.fpandc13.adapter.TicketAdapter
+import com.example.fpandc13.adapter.WishlistAdapter
+import com.example.fpandc13.data.entity.WishlistEntity
 import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
 import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterface
 import com.example.fpandc13.databinding.FragmentTicketBinding
+import com.example.fpandc13.ui.home.wishlist.WishlistViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_ticket.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 @AndroidEntryPoint
 class TicketFragment : Fragment() {
 
-    private val binding: FragmentTicketBinding by lazy {
-        FragmentTicketBinding.inflate(layoutInflater)
-    }
+
+    private var _binding: FragmentTicketBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: TicketViewModel by viewModels()
     private lateinit var ApiHelper: AeroplaneTicketApiInterface
+
+    private lateinit var wviewModel: WishlistViewModel
 
     private val adapter: TicketAdapter by lazy { TicketAdapter(::onClicked) }
 
@@ -41,7 +52,9 @@ class TicketFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ticket, container, false)
+            _binding = FragmentTicketBinding.inflate(inflater, container, false)
+            val view = binding.root
+            return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +63,25 @@ class TicketFragment : Fragment() {
         viewModel.getTicket()
         initList()
         observeQueryResult()
+
+        wviewModel = ViewModelProvider(
+            this
+        ).get(WishlistViewModel::class.java)
+        Wishlist()
+
+        if (arguments?.getSerializable("datadetail") != null) {
+            val getWishlist = arguments?.getSerializable("datadetail") as
+            Glide.with(this)
+            binding.bandara.text = getWishlist.airportName
+            binding.tvKelas.text = getWishlist.movieName
+            binding.DepartureText.text = getWishlist.departure
+            binding.ArrivalText.text = getWishlist.arrival
+            binding.timeDep.text = getWishlist.departureTime
+            binding.timeAriv.text = getWishlist.arrivalTime
+            binding.tvPrice.text = getWishlist.price.toString()
         }
+    }
+
 
     private fun initList() {
         rvTicket.apply {
@@ -82,7 +113,50 @@ class TicketFragment : Fragment() {
             Log.d(TAG, "userId -> $result.user?.id")
         }
     }
+
+
+    fun Wishlist(){
+        if (arguments?.getSerializable("datadetail") != null) {
+            val getTicket = arguments?.getSerializable("datadetail") as
+            val id = getTicket.id
+            val airportName = getTicket.airportName
+            val appLogoPath = getTicket.appLogoPath
+            val price = getTicket.price
+            val departure = getTicket.departure
+            val arrival = getTicket.arrival
+            val departureTime = getTicket.departureTime
+            val arrivalTime = getTicket.arrivalTime
+            val kelas = getTicket.kelas
+
+            var _isChecked = false
+            CoroutineScope(Dispatchers.IO).launch {
+                val count = wviewModel.checkTicket(id)
+                withContext(Dispatchers.Main){
+                    if (count != null){
+                        if (count > 0){
+                            binding.btnFavorit.isChecked = true
+                            _isChecked = true
+                        } else {
+                            binding.btnFavorit.isChecked = false
+                            _isChecked = false
+                        }
+                    }
+                }
+            }
+
+            binding.btnFavorit.setOnClickListener{
+                _isChecked = !_isChecked
+                if (_isChecked) {
+                    wviewModel.addToWishlist(id, airportName, appLogoPath, price, departure, arrival, departureTime, arrivalTime, kelas.toString())
+                } else {
+                    wviewModel.removeFromWishlist(id, airportName, appLogoPath, price, departure, arrival, departureTime, arrivalTime, kelas.toString())
+                }
+                binding.btnFavorit.isChecked = _isChecked
+            }
+        }
+
     }
+}
 
 
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 
 import com.example.fpandc13.databinding.FragmentDashboardBinding
@@ -21,6 +22,14 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDashboardBinding.bind(view)
+
+        binding.imageButton.setOnClickListener {
+            this.findNavController().navigate(R.id.action_firstFragment_to_aboutFragment)
+        }
+
+        binding.imageButton3.setOnClickListener {
+            this.findNavController().navigate(R.id.action_firstFragment_to_wishlistFragment)
+        }
 
         binding.apply {
             dateArEdit.setOnClickListener {

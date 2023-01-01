@@ -1,5 +1,6 @@
 package com.example.fpandc13.ui.activity.Home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -34,6 +35,8 @@ class HomeActivity : AppCompatActivity() {
         setupSmoothBottomMenu()
         supportActionBar?.hide()
         setupNavigation()
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
