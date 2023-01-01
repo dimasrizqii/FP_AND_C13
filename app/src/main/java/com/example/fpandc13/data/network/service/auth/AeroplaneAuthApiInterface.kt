@@ -3,7 +3,7 @@ package com.example.fpandc13.data.network.service.auth
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
 import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
-import com.example.fpandc13.data.network.models.auth.profile.get.profile
+import com.example.fpandc13.data.network.models.auth.profile.get.Profile
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.models.auth.register.RegisterRequestBody
 import com.example.fpandc13.data.network.models.auth.register.RegisterResponse
@@ -31,13 +31,13 @@ interface AeroplaneAuthApiInterface {
         @Body verifyRequestBody: VerifyRequestBody
     ): VerifyResponse
 
-    @GET("api/auth/profile")
+    @GET("api/auth/Profile")
     suspend fun getProfileUser(
         @Header("Authorization") token: String
     ): GetUserProfileResponse
 
     @Multipart
-    @PUT("api/auth/profile")
+    @PUT("api/auth/Profile")
     fun updateUser(
         @Part("firstName") firstName: RequestBody,
         @Part("lastName") lastName: RequestBody,
@@ -45,12 +45,12 @@ interface AeroplaneAuthApiInterface {
         @Part("phone_number") phone_number: RequestBody,
         @Part("address") address: RequestBody,
         @Part image: MultipartBody.Part ,
-        @Header("Authorization") token: String): Call <profile>
+        @Header("Authorization") token: String): Call <Profile>
 
-    @GET("api/auth/profile")
+    @GET("api/auth/Profile")
     suspend fun getProfile(token : String): GetUserProfileResponse
 
 
-    @PUT("api/auth/profile")
+    @PUT("api/auth/Profile")
     suspend fun putProfile(token: String): UpdateProfileResponse
 }

@@ -5,7 +5,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-class profileFragmentTest {
+class ProfileFragmentTest {
 
     private lateinit var profile: ProfileFragment
 

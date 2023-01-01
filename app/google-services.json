@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "188613889557",
+    "project_id": "fp-and-c13",
+    "storage_bucket": "fp-and-c13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:188613889557:android:0174150f6242993eff081c",
+        "android_client_info": {
+          "package_name": "com.example.fpandc13"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "188613889557-pj9bd47v93fpus8vvengsvd9636s6a39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUs_nX3ZUj-HJODtqtlPjCLhSqwHluCQA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "188613889557-pj9bd47v93fpus8vvengsvd9636s6a39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

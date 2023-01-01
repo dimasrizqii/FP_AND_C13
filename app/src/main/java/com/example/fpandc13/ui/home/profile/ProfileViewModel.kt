@@ -5,7 +5,7 @@ import com.example.fpandc13.data.local.preference.UserDataStoreManager
 import com.example.fpandc13.data.network.models.auth.login.LoginRequestBody
 import com.example.fpandc13.data.network.models.auth.login.LoginResponse
 import com.example.fpandc13.data.network.models.auth.profile.get.GetUserProfileResponse
-import com.example.fpandc13.data.network.models.auth.profile.get.profile
+import com.example.fpandc13.data.network.models.auth.profile.get.Profile
 import com.example.fpandc13.data.network.models.auth.profile.update.UpdateProfileResponse
 import com.example.fpandc13.data.network.service.auth.AeroplaneAuthApiInterface
 import com.example.fpandc13.data.repository.AuthRepository
@@ -33,8 +33,8 @@ class ProfileViewModel @Inject constructor(private val dataStoreManager: UserDat
 
     private val _user: MutableLiveData<GetUserProfileResponse> = MutableLiveData()
     val user: LiveData<GetUserProfileResponse?> get() = _user
-    private val _update: MutableLiveData<profile?> = MutableLiveData()
-    val update: LiveData<profile?> get() = _update
+    private val _update: MutableLiveData<Profile?> = MutableLiveData()
+    val update: LiveData<Profile?> get() = _update
 
     suspend fun getProfile(token: String) {
         userRepository.getProfileData(token)
@@ -68,10 +68,10 @@ class ProfileViewModel @Inject constructor(private val dataStoreManager: UserDat
         token: String
     ){
         ApiClient.updateUser(firstName,lastName,userName,phone_number,address,image,token)
-            .enqueue(object : Callback<profile> {
+            .enqueue(object : Callback<Profile> {
                 override fun onResponse(
-                    call: Call<profile>,
-                    response: Response<profile>
+                    call: Call<Profile>,
+                    response: Response<Profile>
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
@@ -81,7 +81,7 @@ class ProfileViewModel @Inject constructor(private val dataStoreManager: UserDat
                     }
                 }
 
-                override fun onFailure(call: Call<profile>, t: Throwable) {
+                override fun onFailure(call: Call<Profile>, t: Throwable) {
                     _update.postValue(null)
                 }
             })

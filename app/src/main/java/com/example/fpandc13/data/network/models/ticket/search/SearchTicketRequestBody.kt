@@ -10,7 +10,7 @@ data class SearchTicketRequestBody(
     val airportName: String? = null,
     @SerializedName("arrival_date")
     val arrivalDate: String? = null,
-    @SerializedName("class")
+    @SerializedName("class_type")
     val classX: String? = null,
     @SerializedName("departure_date")
     val departureDate: String? = null,
