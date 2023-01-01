@@ -21,6 +21,8 @@ import com.example.fpandc13.data.network.models.passenger.create.CreatePassenger
 import com.example.fpandc13.databinding.ActivityHomeBinding
 import com.example.fpandc13.databinding.FragmentDataPassengerBinding
 import com.example.fpandc13.databinding.FragmentTicketBinding
+import com.example.fpandc13.ui.home.profile.ProfileViewModel
+import com.example.fpandc13.ui.login.LoginViewModel
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,6 +36,8 @@ class DataPassengerFragment : Fragment() {
 
     private val args: DataPassengerFragmentArgs by navArgs()
     private val viewModel: DataPassengerViewModel by viewModels()
+    private val userViewModel : ProfileViewModel by viewModels()
+    private val authViewModel : LoginViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,10 +61,13 @@ class DataPassengerFragment : Fragment() {
 
 
         observeQueryResult()
+        observeDataUser()
         initView()
         binding.btnCheckout.setOnClickListener { CreatePassenger() }
 
     }
+
+
 
 
     private fun CreatePassenger() {
@@ -70,19 +77,39 @@ class DataPassengerFragment : Fragment() {
 
             binding.edtName.isEnabled = false
             binding.inputNik.isEnabled = false
-            viewModel.postPassengers(parseFormIntoEntity(nama, nik))}
-        findNavController().navigate(R.id.action_dataPassengerFragment_to_bookingRoundFragment)
-        Toast.makeText(requireContext(), "Data passenger berhasil ditambahkan", Toast.LENGTH_LONG).show()
+            viewModel.postPassengers(parseFormIntoEntity(nik, nama))}
     }
 
-
-    private fun observeQueryResult() {
-        viewModel.LiveDataTicket.observe(viewLifecycleOwner) { result ->
-            Log.d(ContentValues.TAG, "Fragment -> ${result}")
+    private fun observeDataUser(){
+        authViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
+            userViewModel.GetProfileUser("Bearer $it")
         }
+        userViewModel.GetProfileUserResponse.observe(viewLifecycleOwner) {
+            when(it){
+                is Resource.Success ->{
+                    Log.d("GetUserProfileResponse", it.data.toString())
+                    viewModel.SaveUserId("${it.data?.profile?.id}")
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Reload Gagal : ObserveGet", Toast.LENGTH_LONG).show()
+
+                }
+                is Resource.Empty-> {
+                    Toast.makeText(requireContext(), "Field : Empty", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+
+        }
+    }
+    private fun observeQueryResult() {
+
         viewModel.CreatePassenger.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{
+                    viewModel.SavePassengerId("${it.data?.newPassenger?.id}")
+                    Toast.makeText(requireContext(), "${it.data?.newPassenger?.id}", Toast.LENGTH_LONG).show()
+                    findNavController().navigate(R.id.action_dataPassengerFragment_to_bookingRoundFragment)
                     Log.d("VerifyResponse", it.data.toString())
                 }
                 is Resource.Error -> {
@@ -91,23 +118,27 @@ class DataPassengerFragment : Fragment() {
                 is Resource.Empty -> {
                     Toast.makeText(requireContext(), "Empty : Kosong", Toast.LENGTH_LONG).show()
                 }
+                is Resource.Loading -> {
+                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_LONG).show()
+                }
                 else -> {}
             }
         }
-
     }
+
 
     private fun initView() {
         binding.apply {
             args.ticketData.apply {
+
                 bandara.text = airport?.airportName
                 timeAriv.text = arrivalDate
                 timeDep.text = departureDate
                 dateDepEdit.text = airport?.airportLocation
                 harga.text = "Rp."+price.toString()
                 FlightCode.text = "AERO"+"PLN"+id+"4A3U1"
+                viewModel.SaveTicketId(id.toString())
             }
-
             }
         }
 
@@ -136,7 +167,13 @@ class DataPassengerFragment : Fragment() {
         return isValid
     }
 
-    private fun parseFormIntoEntity(name: String, nik: String): CreatePassengerRequestBody {
-        return CreatePassengerRequestBody(name, nik)
+    private fun parseFormIntoEntity(nik: String, name: String): CreatePassengerRequestBody {
+        return CreatePassengerRequestBody(nik, name)
     }
     }
+
+
+//
+//        viewModel.LiveDataTicket.observe(viewLifecycleOwner) { result ->
+//            Log.d(ContentValues.TAG, "Fragment -> ${result}")
+//        }

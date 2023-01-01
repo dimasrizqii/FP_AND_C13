@@ -87,28 +87,4 @@ class ProfileViewModel @Inject constructor(val dataStoreManager: UserDataStoreMa
                 }
             })
     }
-
-    fun PutProfileUser(token : String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val ProfilePut = userRepository.PutProfileData(token)
-            viewModelScope.launch(Dispatchers.Main) {
-                _ProfilePutResponse.postValue(ProfilePut)
-            }
-        }
-    }
-
-    fun postLoginUser(loginRequestBody: LoginRequestBody) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val loginResponse = AuthRepository.postLoginUser(loginRequestBody)
-            viewModelScope.launch(Dispatchers.Main) {
-                _postLoginUserResponse.postValue(loginResponse)
-            }
-        }
-    }
-
-
-
-
-
-
 }

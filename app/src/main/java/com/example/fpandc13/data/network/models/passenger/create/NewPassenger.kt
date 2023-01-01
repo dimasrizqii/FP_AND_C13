@@ -1,8 +1,11 @@
 package com.example.fpandc13.data.network.models.passenger.create
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class NewPassenger(
     @SerializedName("createdAt")
     val createdAt: String?,
@@ -14,4 +17,4 @@ data class NewPassenger(
     val passengerName: String?,
     @SerializedName("updatedAt")
     val updatedAt: String?
-)
+) :Parcelable

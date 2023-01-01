@@ -6,12 +6,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fpandc13.R
 import com.example.fpandc13.adapter.SearchAdapter
 import com.example.fpandc13.adapter.TicketAdapter
@@ -21,6 +23,9 @@ import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterf
 import com.example.fpandc13.databinding.FragmentLoginBinding
 import com.example.fpandc13.databinding.FragmentTicketBinding
 import com.example.fpandc13.ui.home.datapassenger.DataPassengerFragmentArgs
+import com.example.fpandc13.ui.home.profile.ProfileViewModel
+import com.example.fpandc13.ui.login.LoginViewModel
+import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -36,6 +41,8 @@ class TicketFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: TicketViewModel by viewModels()
+    private val userViewModel : ProfileViewModel by viewModels()
+    private val authViewModel : LoginViewModel by viewModels()
     private val adapter: TicketAdapter by lazy { TicketAdapter(::onClicked) }
 
 
@@ -91,6 +98,29 @@ class TicketFragment : Fragment() {
             showTicketList(result)
             Log.d(TAG, "Fragment -> ${result}")
         }
+        authViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
+            userViewModel.GetProfileUser("Bearer $it")
+        }
+        userViewModel.GetProfileUserResponse.observe(viewLifecycleOwner) {
+            when(it){
+                is Resource.Success ->{
+                    Log.d("GetUserProfileResponse", it.data.toString())
+//                    binding.apply {
+//                        userToolbar.setText("${it.data?.profile?.username.toString()}")
+//                    }
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Reload Gagal : ObserveGet", Toast.LENGTH_LONG).show()
+
+                }
+                is Resource.Empty-> {
+                    Toast.makeText(requireContext(), "Field : Empty", Toast.LENGTH_LONG).show()
+                }
+                else -> {}
+            }
+
+        }
+
     }
 
     private fun showTicketList(ticket: List<Ticket>) {

@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class profile(
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("address")
     val address: String?,
     @SerializedName("country_code")

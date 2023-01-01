@@ -63,5 +63,19 @@
         <action
             android:id="@+id/action_bookingRoundFragment_to_dataPassengerFragment"
             app:destination="@id/dataPassengerFragment" />
+        <argument
+            android:name="DataUser"
+            app:argType="com.example.fpandc13.data.network.models.auth.profile.get.profile" />
+        <argument
+            android:name="DataPassenger"
+            app:argType="com.example.fpandc13.data.network.models.passenger.create.NewPassenger" />
+        <action
+            android:id="@+id/action_bookingRoundFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.fpandc13.ui.home.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
 </navigation>

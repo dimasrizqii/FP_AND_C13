@@ -127,7 +127,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <TextView
                         android:id="@+id/DepartureText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                         app:layout_constraintVertical_bias="0.086"
                         app:tint="@color/black" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <TextView
                         android:id="@+id/ArrivalText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -437,7 +437,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="30dp"
-                android:text="Pesan Sekarang"
+                android:text="BOOK NOW"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"

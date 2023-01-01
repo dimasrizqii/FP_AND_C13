@@ -144,7 +144,6 @@ class ProfileFragment : Fragment() {
         UserViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
             viewModel.GetProfileUser("Bearer $it")
         }
-
         viewModel.user.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {

@@ -8,15 +8,15 @@ import com.example.fpandc13.data.network.service.booking.AeroplaneBookingApiInte
 import javax.inject.Inject
 
 interface BookingRemoteDataSource {
-    suspend fun createBooking(createBookingRequestBody: CreateBookingRequestBody): CreateBookingResponse
+    suspend fun createBooking(token : String, createBookingRequestBody: CreateBookingRequestBody): CreateBookingResponse
     suspend fun listBooking(): ListBookingResponse
     suspend fun listPerUserBooking(): ListPerUserBookingResponse
 }
 
 class BookingRemoteDataSourceImpl @Inject constructor(private val apiService: AeroplaneBookingApiInterface) :
     BookingRemoteDataSource {
-    override suspend fun createBooking(createBookingRequestBody: CreateBookingRequestBody): CreateBookingResponse {
-        return apiService.createBooking(createBookingRequestBody)
+    override suspend fun createBooking(token : String , createBookingRequestBody: CreateBookingRequestBody): CreateBookingResponse {
+        return apiService.createBooking(token, createBookingRequestBody)
     }
 
     override suspend fun listBooking(): ListBookingResponse {

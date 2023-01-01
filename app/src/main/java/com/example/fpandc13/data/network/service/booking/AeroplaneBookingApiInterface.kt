@@ -6,11 +6,13 @@ import com.example.fpandc13.data.network.models.booking.list.ListBookingResponse
 import com.example.fpandc13.data.network.models.booking.listperuser.ListPerUserBookingResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface AeroplaneBookingApiInterface {
     @POST("api/bookings")
     suspend fun createBooking(
+        @Header("Authorization") token: String,
         @Body createBookingRequestBody: CreateBookingRequestBody
     ): CreateBookingResponse
 

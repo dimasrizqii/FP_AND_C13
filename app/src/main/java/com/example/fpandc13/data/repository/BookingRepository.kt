@@ -9,7 +9,7 @@ import com.example.fpandc13.wrapper.Resource
 import javax.inject.Inject
 
 interface BookingRepository {
-    suspend fun createBooking(createBookingRequestBody: CreateBookingRequestBody): Resource<CreateBookingResponse>
+    suspend fun createBooking(token : String , createBookingRequestBody: CreateBookingRequestBody): Resource<CreateBookingResponse>
     suspend fun listBooking(): Resource<ListBookingResponse>
     suspend fun listPerUserBooking(): Resource<ListPerUserBookingResponse>
 }
@@ -17,9 +17,9 @@ interface BookingRepository {
 class BookingRepositoryImpl @Inject constructor(private val dataSource: BookingRemoteDataSource) :
     BookingRepository {
 
-    override suspend fun createBooking(createBookingRequestBody: CreateBookingRequestBody): Resource<CreateBookingResponse> {
+    override suspend fun createBooking(token : String , createBookingRequestBody: CreateBookingRequestBody): Resource<CreateBookingResponse> {
         return proceed {
-            dataSource.createBooking(createBookingRequestBody)
+            dataSource.createBooking(token , createBookingRequestBody)
         }
     }
 

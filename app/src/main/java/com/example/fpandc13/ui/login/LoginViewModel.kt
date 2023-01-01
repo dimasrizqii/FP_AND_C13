@@ -34,14 +34,6 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
         }
     }
 
-    fun getEmail(): LiveData<String> {
-        return dataStoreManager.getEmail().asLiveData()
-    }
-
-    fun setTokeUser(): LiveData<String> {
-        return dataStoreManager.getPassword().asLiveData()
-    }
-
     fun getLoginStatus(): LiveData<Boolean> {
         return dataStoreManager.getLoginStatus().asLiveData()
     }
@@ -65,23 +57,6 @@ class LoginViewModel @Inject constructor(private val dataStoreManager: UserDataS
         }
     }
 
-    fun GetProfileUser(token : String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val ProfileGet = userRepository.GetProfileData(token)
-            viewModelScope.launch(Dispatchers.Main) {
-                _ProfileResponse.postValue(ProfileGet)
-            }
-        }
-    }
-
-    fun PutProfileUser(token : String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val ProfilePut = userRepository.PutProfileData(token)
-            viewModelScope.launch(Dispatchers.Main) {
-                _ProfilePutResponse.postValue(ProfilePut)
-            }
-        }
-    }
 
     fun postVerifyUser(verifyRequestBody: VerifyRequestBody) {
         viewModelScope.launch(Dispatchers.IO) {

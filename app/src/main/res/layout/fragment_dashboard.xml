@@ -162,18 +162,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ArrivalText" />
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="320dp"
-                android:layout_height="2dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/arrivaledit"
-                app:layout_constraintVertical_bias="0.0" />
-
             <TextView
                 android:id="@+id/dateArrival"
                 android:layout_width="wrap_content"
