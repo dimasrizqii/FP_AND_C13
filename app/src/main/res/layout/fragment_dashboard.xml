@@ -189,7 +189,7 @@
                 android:layout_height="15dp"
                 android:layout_marginTop="1dp"
                 android:src="@drawable/_200px_disc_plain_yellow_dark_svg"
-                android:visibility="visible"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.856"
