@@ -1,11 +1,14 @@
 package com.example.fpandc13.ui.home.history
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,8 +17,10 @@ import com.example.fpandc13.adapter.HistoryAdapter
 import com.example.fpandc13.data.network.models.booking.historyUser.Booking
 import com.example.fpandc13.data.network.service.booking.AeroplaneBookingApiInterface
 import com.example.fpandc13.databinding.FragmentHistoryBinding
+import com.example.fpandc13.ui.activity.Home.HomeActivity
 import com.example.fpandc13.ui.home.profile.ProfileViewModel
 import com.example.fpandc13.ui.login.LoginViewModel
+import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +53,11 @@ class HistoryFragment : Fragment() {
         GetProfile()
         initList()
         observeQueryResult()
+        binding.btnBack.setOnClickListener(){
+            activity?.let { it ->
+                val intent = Intent(it, HomeActivity::class.java)
+                it.startActivity(intent)}
+        }
 
     }
 
@@ -71,6 +81,7 @@ class HistoryFragment : Fragment() {
             showTicketList(result.booking)
             Log.d(ContentValues.TAG, "Fragment -> ${result.booking}")
         }
+
     }
 
 
@@ -78,6 +89,25 @@ class HistoryFragment : Fragment() {
     private fun observeQueryResult(){
         viewModel.HistoryResponse.observe(viewLifecycleOwner) { result ->
             showTicketList(result)
+        }
+        userViewModel.GetProfileUserResponse.observe(viewLifecycleOwner) {
+            when(it){
+                is Resource.Success ->{
+                    Log.d("GetUserProfileResponse", it.data.toString())
+                }
+                is Resource.Error -> {
+                    Toast.makeText(requireContext(), "Reload Gagal : ObserveGet", Toast.LENGTH_LONG).show()
+
+                }
+                is Resource.Empty-> {
+                    Toast.makeText(requireContext(), "Field : Empty", Toast.LENGTH_LONG).show()
+                }
+                is Resource.Loading-> {
+                    binding.progressBar.isVisible
+                }
+                else -> {}
+            }
+
         }
     }
 

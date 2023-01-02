@@ -6,9 +6,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -17,8 +15,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.ActivityHomeBinding
-import com.example.fpandc13.ui.home.datapassenger.DataPassengerFragment
-import com.example.fpandc13.ui.home.profile.ProfileViewModel
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,8 +25,13 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityHomeBinding
 
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+//    private lateinit var firebaseCrashlytics: FirebaseCrashlytics
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        firebaseAnalytics = Firebase.analytics
+//        firebaseCrashlytics = Firebase.crashlytics
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)

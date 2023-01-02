@@ -68,23 +68,37 @@ class BookingRoundFragment : Fragment() {
         val tanggal : TextView = binding.arrivalEdit
         val harga : TextView = binding.harga
         val kelas : TextView = binding.tvKelas
-        val args = this.arguments
-        val inputBandara = args?.get("dataBandara")
-        val inputDatang = args?.get("dataDatang")
-        val inputBerangkat = args?.get("dataBerangkat")
-        val inputTanggal = args?.get("dataTanggal")
-        val inputharga = args?.get("dataBandara")
-        val inputKelas = args?.get("dataKelas")
-        bandara.text = inputBandara.toString()
-        timeAriv.text = inputDatang.toString()
-        timeDep.text = inputBerangkat.toString()
-        tanggal.text = inputTanggal.toString()
-        harga.text = inputharga.toString()
-        kelas.text = inputKelas.toString()
 
         observeQueryResult()
+        initData()
         binding.btnSearch.setOnClickListener { CreateBooking() }
 
+
+
+    }
+
+    private fun initData(){
+        binding.apply {
+            viewModel.getDataStoreAirport().observe(viewLifecycleOwner){
+                binding.Departureedit.text = "$it"
+            }
+            viewModel.getDataStoreAr().observe(viewLifecycleOwner){
+                binding.dateRetEdit.text = "$it"
+            }
+            viewModel.getDataStoreDep().observe(viewLifecycleOwner){
+                binding.dateDepEdit.text = "$it"
+            }
+            viewModel.getDataStorePrice().observe(viewLifecycleOwner){
+                binding.harga.text = "$it"
+            }
+            viewModel.getDataStoreKelas().observe(viewLifecycleOwner){
+                binding.tvKelas.text = "$it"
+            }
+            viewModel.getDataStoreTanggal().observe(viewLifecycleOwner){
+                binding.arrivalEdit.text = "$it"
+            }
+
+        }
     }
 
     private fun observeQueryResult() {
@@ -96,6 +110,7 @@ class BookingRoundFragment : Fragment() {
                 is Resource.Success ->{
                     Toast.makeText(requireContext(), "${it.data?.message}", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_bookingRoundFragment_to_paymentFragment)
+                    viewModel.setNotif(true)
                     Toast.makeText(requireContext(), "Booking Berhasil ", Toast.LENGTH_LONG).show()
                     Log.d("VerifyResponse", it.data.toString())
                 }

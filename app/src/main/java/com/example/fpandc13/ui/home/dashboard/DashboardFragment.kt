@@ -1,6 +1,7 @@
 package com.example.fpandc13.ui.home.dashboard
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,19 +10,25 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
 import com.example.fpandc13.data.network.models.ticket.search.SearchTicketRequestBody
 import com.example.fpandc13.databinding.FragmentDashboardBinding
+import com.example.fpandc13.ui.activity.Home.HomeActivity
 import com.example.fpandc13.ui.home.DatePickerFragment
+import com.example.fpandc13.ui.home.history.HistoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: DashboardViewModel by viewModels()
 
     var spinner: Spinner? = null
 
@@ -47,17 +54,22 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDashboardBinding.bind(view)
 
+        viewModel.getNotif().observe(viewLifecycleOwner) {
+            if (it == true) {
+               binding.notif.visibility = View.VISIBLE
+            } else {
+                binding.notif.visibility = View.INVISIBLE
+            }
+        }
+        binding.imageButton4.setOnClickListener(){
+            viewModel.setNotif(false)
+            findNavController().navigate(R.id.action_firstFragment_to_historyFragment)
 
-//        spinner = this.spinner
-//        spinner!!.setOnItemSelectedListener(this)
+        }
+        binding.imageButton.setOnClickListener(){
+            findNavController().navigate(R.id.action_firstFragment_to_aboutFragment)
+        }
 
-        // Create an ArrayAdapter using a simple spinner layout and languages array
-//        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, bandara)
-//        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, bandara)
-        // Set layout to use when the list of choices appear
-//        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        // Set Adapter to Spinner
-//        spinner!!.setAdapter(aa)
 
         binding.apply {
             dateArEdit.setOnClickListener {

@@ -67,25 +67,7 @@ class DataPassengerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button : Button = binding.btnCheckout
-        button.setOnClickListener(){
-            val bandara : TextView = binding.bandara
-            val harga : TextView = binding.harga
-            val ariv : TextView = binding.timeAriv
-            val dep : TextView = binding.timeDep
-            val tanggal : TextView = binding.dateDepEdit
-            val kelas : TextView = binding.tvKelas
-            val bundle = Bundle()
-            bundle.putString("dataBandara",bandara.toString())
-            bundle.putString("dataHarga",harga.toString())
-            bundle.putString("dataDatang",ariv.toString())
-            bundle.putString("dataBerangkat",dep.toString())
-            bundle.putString("dataTanggal",tanggal.toString())
-            bundle.putString("dataKelas",kelas.toString())
-            val fragment = BookingRoundFragment()
-            fragment.arguments = bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.main_fragment,fragment)?.commit()
-        }
+
 
 
         observeQueryResult()
@@ -159,6 +141,24 @@ class DataPassengerFragment : Fragment() {
         }
     }
 
+    private fun initData(){
+        binding.apply {
+            val airport: String = bandara.getText().toString()
+            val tanggal: String = timeDep.getText().toString()
+            val datang : String = timeDep.getText().toString()
+            val budal: String = timeAriv.getText().toString()
+            val harga: String = harga.getText().toString()
+            val kelas: String = tvKelas.getText().toString()
+            viewModel.saveAirport(airport)
+            viewModel.saveDate(tanggal)
+            viewModel.saveAr(datang)
+            viewModel.saveDep(budal)
+            viewModel.savePrice(harga)
+            viewModel.saveKelas(kelas)
+
+        }
+    }
+
 
     private fun initView() {
         binding.apply {
@@ -172,6 +172,7 @@ class DataPassengerFragment : Fragment() {
                 FlightCode.text = "AERO"+"PLN"+id+"4A3U1"
                 viewModel.SaveTicketId(id.toString())
             }
+            initData()
             }
         }
 

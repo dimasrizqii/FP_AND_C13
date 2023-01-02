@@ -6,10 +6,12 @@ import javax.inject.Inject
 
 interface UserLocalDataSource {
     suspend fun setUserLogin(isLogin: Boolean)
+    suspend fun setNotif(isLogin: Boolean)
     suspend fun setUserToken(isToken: String)
     suspend fun SaveUserToken(isToken: String)
 
     fun getUserLoginStatus(): Flow<Boolean>
+    fun getNotif(): Flow<Boolean>
 }
 
 class UserLocalDataSourceImpl @Inject constructor(
@@ -30,5 +32,13 @@ class UserLocalDataSourceImpl @Inject constructor(
 
     override fun getUserLoginStatus(): Flow<Boolean> {
         return userDataStore.getUserLoginStatus()
+    }
+
+    override fun getNotif(): Flow<Boolean> {
+        return userDataStore.getNotifStatus()
+    }
+
+    override suspend fun setNotif(isNotif: Boolean) {
+        userDataStore.setNotif(isNotif)
     }
 }

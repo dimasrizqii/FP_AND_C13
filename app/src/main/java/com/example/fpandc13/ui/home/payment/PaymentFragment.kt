@@ -11,8 +11,9 @@ import com.example.fpandc13.R
 import com.example.fpandc13.databinding.FragmentDataPassengerBinding
 import com.example.fpandc13.databinding.FragmentPaymentBinding
 import com.example.fpandc13.ui.activity.Home.HomeActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PaymentFragment : Fragment() {
 
     private var _binding: FragmentPaymentBinding? = null

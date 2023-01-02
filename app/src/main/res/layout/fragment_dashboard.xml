@@ -101,11 +101,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
+
+
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="42dp"
+                android:layout_marginStart="44dp"
                 android:background="@drawable/login_button_bk"
                 android:src="@drawable/ic_about_foreground"
                 app:layout_constraintStart_toStartOf="parent"
@@ -180,6 +182,20 @@
                 app:layout_constraintEnd_toEndOf="@+id/imageButton4"
                 app:layout_constraintStart_toStartOf="@+id/imageButton4"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
+
+            <ImageView
+                android:id="@+id/notif"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/_200px_disc_plain_yellow_dark_svg"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.856"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

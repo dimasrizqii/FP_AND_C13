@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -88,6 +90,7 @@ class TicketFragment : Fragment() {
             when(it){
                 is Resource.Success ->{
                     Log.d("GetUserProfileResponse", it.data.toString())
+                    binding.progressBar.isInvisible
                 }
                 is Resource.Error -> {
                     Toast.makeText(requireContext(), "Reload Gagal : ObserveGet", Toast.LENGTH_LONG).show()
@@ -95,6 +98,9 @@ class TicketFragment : Fragment() {
                 }
                 is Resource.Empty-> {
                     Toast.makeText(requireContext(), "Field : Empty", Toast.LENGTH_LONG).show()
+                }
+                is Resource.Loading-> {
+                    Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_LONG).show()
                 }
                 else -> {}
             }

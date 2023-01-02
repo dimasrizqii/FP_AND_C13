@@ -63,6 +63,46 @@ class DataPassengerViewModel @Inject constructor(
             }
         }
     }
+
+    fun saveAirport(isAirport: String) {
+        viewModelScope.launch {
+            dataStoreManager.setairport(isAirport)
+        }
+    }
+
+    fun saveDate(isDate: String) {
+        viewModelScope.launch {
+            dataStoreManager.setTanggal(isDate)
+        }
+    }
+
+    fun saveAr(isAr: String) {
+        viewModelScope.launch {
+            dataStoreManager.setArrival(isAr)
+        }
+    }
+
+    fun saveDep(isDep: String) {
+        viewModelScope.launch {
+            dataStoreManager.setDeparture(isDep)
+        }
+    }
+
+    fun savePrice(isPrice: String) {
+        viewModelScope.launch {
+            dataStoreManager.setHarga(isPrice)
+        }
+    }
+
+    fun saveKelas(isKelas: String) {
+        viewModelScope.launch {
+            dataStoreManager.setKelas(isKelas)
+        }
+    }
+
+
+
+
     fun SaveUserId(isUser: String) {
         viewModelScope.launch {
             dataStoreManager.setUser(isUser)
