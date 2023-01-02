@@ -96,16 +96,16 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
 
 
         binding.SearchButton.setOnClickListener {
-            val airportName: String = binding.airport.getSelectedItem().toString()
-            val Departure: String = binding.dateDepEdit.getText().toString()
-            val Arrival: String = binding.dateDeparture.getText().toString()
-            val price: Int = 0
-            val kelas : String = ""
-            val airportloc : String = ""
-
-            val searchTickets =
-                parseFormIntoEntity(airportName,airportloc,Departure,Arrival,price, kelas)
-            navigateToSearchResult(searchTickets)
+//            val airportName: String = binding.airport.getSelectedItem().toString()
+//            val Departure: String = binding.dateDepEdit.getText().toString()
+//            val Arrival: String = binding.dateDeparture.getText().toString()
+//            val price: Int = 0
+//            val kelas : String = ""
+//            val airportloc : String = ""
+//
+//            val searchTickets =
+//                parseFormIntoEntity(airportName,airportloc,Departure,Arrival,price, kelas)
+//            navigateToSearchResult(searchTickets)
         }
 
         binding.apply {
