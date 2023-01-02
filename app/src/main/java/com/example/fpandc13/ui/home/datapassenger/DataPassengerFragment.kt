@@ -77,7 +77,10 @@ class DataPassengerFragment : Fragment() {
 
             binding.edtName.isEnabled = false
             binding.inputNik.isEnabled = false
-            viewModel.postPassengers(parseFormIntoEntity(nik, nama))}
+            authViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
+                viewModel.postPassengers("Bearer $it", parseFormIntoEntity(nik, nama))}
+            }
+
     }
 
     private fun observeDataUser(){
@@ -103,7 +106,9 @@ class DataPassengerFragment : Fragment() {
         }
     }
     private fun observeQueryResult() {
-
+        authViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
+            userViewModel.GetProfileUser("Bearer $it")
+        }
         viewModel.CreatePassenger.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{

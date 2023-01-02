@@ -15,6 +15,7 @@
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_history.xml" value="0.12" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_notifikasi.xml" value="0.33" />
         <entry key="..\:/Users/YULLY/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_ticket_list.xml" value="0.25" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable-v24/background_rounded.xml" value="0.2225" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable-v24/ic_notification.xml" value="0.146" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/ic_smile_foreground.xml" value="0.1225" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/drawable/login_button_bk.xml" value="0.146" />
@@ -31,19 +32,20 @@
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_date_picker.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_history.xml" value="0.2" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_login.xml" value="0.19746376811594202" />
-        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_payment.xml" value="0.1983695652173913" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_payment.xml" value="0.2" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_payment_procces.xml" value="0.18704710144927536" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_register.xml" value="0.264" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_search_result.xml" value="0.20018115942028986" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_ticket.xml" value="0.2" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_ticket_detail.xml" value="0.2" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_ticket_list.xml" value="0.264" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/fragment_wishlist.xml" value="0.152" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_history.xml" value="0.264" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_notifikasi.xml" value="0.19746376811594202" />
-        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_passanger_ticket.xml" value="0.2" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_passanger_ticket.xml" value="0.536" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_ticket.xml" value="0.264" />
-        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_ticket_list.xml" value="0.4" />
+        <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_ticket_list.xml" value="0.264" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/item_wishlist.xml" value="0.4" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/partial_dashboard.xml" value="0.18704710144927536" />
         <entry key="..\:/Users/cacin/AndroidStudioProjects/FP_AND_C13/app/src/main/res/layout/searchticket_fragment.xml" value="0.2" />

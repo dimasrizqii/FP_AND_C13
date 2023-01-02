@@ -7,15 +7,15 @@ import com.example.fpandc13.data.network.service.passenger.AeroplanePassengerApi
 import javax.inject.Inject
 
 interface PassengerRemoteDataSource {
-    suspend fun createPassenger(createPassengerRequestBody: CreatePassengerRequestBody): CreatePassengerResponse
+    suspend fun createPassenger(token : String , createPassengerRequestBody: CreatePassengerRequestBody): CreatePassengerResponse
     suspend fun getAPassenger(id: Int?): PassengerResponse
 }
 
 class PassengerRemoteDataSourceImpl @Inject constructor(private val apiService: AeroplanePassengerApiInterface) :
     PassengerRemoteDataSource {
 
-    override suspend fun createPassenger(createPassengerRequestBody: CreatePassengerRequestBody): CreatePassengerResponse {
-        return apiService.createPassenger(createPassengerRequestBody)
+    override suspend fun createPassenger(token : String ,createPassengerRequestBody: CreatePassengerRequestBody): CreatePassengerResponse {
+        return apiService.createPassenger(token ,createPassengerRequestBody)
     }
 
     override suspend fun getAPassenger(id: Int?): PassengerResponse {

@@ -54,22 +54,6 @@ class TicketFragment : Fragment() {
             return binding.root
     }
 
-//    private val adapterSearch: SearchAdapter by lazy {
-//        SearchAdapter (object : TicketItemClickListener {
-//            override fun onItemClicked(item: Ticket) {
-//                val action = TicketFragmentDirections.actionTicketFragmentToDataPassengerFragment(item)
-//                findNavController().navigate(action)
-//            }
-//
-//            override fun onUpdateMenuClicked(ticket: Ticket) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onDeleteMenuClicked(id: Int) {
-//                TODO("Not yet implemented")
-//            }
-//        })
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -93,7 +77,6 @@ class TicketFragment : Fragment() {
             showTicketList(result.ticket)
             Log.d(TAG, "Fragment -> ${result.ticket}")
         }
-
         viewModel.LiveDataTicket.observe(viewLifecycleOwner) { result ->
             showTicketList(result)
             Log.d(TAG, "Fragment -> ${result}")
@@ -105,9 +88,6 @@ class TicketFragment : Fragment() {
             when(it){
                 is Resource.Success ->{
                     Log.d("GetUserProfileResponse", it.data.toString())
-//                    binding.apply {
-//                        userToolbar.setText("${it.data?.profile?.username.toString()}")
-//                    }
                 }
                 is Resource.Error -> {
                     Toast.makeText(requireContext(), "Reload Gagal : ObserveGet", Toast.LENGTH_LONG).show()

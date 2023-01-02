@@ -23,7 +23,6 @@ class TicketAdapter (private val onClick: (Ticket) -> Unit) :
                 binding.timeDep.text = item?.departureDate
                 binding.dateDepEdit.text = item?.airport?.airportLocation
                 binding.tvKelas.text = item?.classX
-
                 root.setOnClickListener { onClick(item) }
             }
         }

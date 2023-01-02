@@ -4,7 +4,6 @@
     android:id="@+id/item_history"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
     android:layout_marginBottom="10dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="15dp"
@@ -78,6 +77,7 @@
 
 
                 <TextView
+                    android:id="@+id/code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Penumpang"
@@ -109,7 +109,7 @@
                     android:id="@+id/tvKode1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="JKT"
+                    android:text="ARRIVAL"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -118,7 +118,7 @@
                     android:id="@+id/tvKeberangkatan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jakarta"
+                    android:text="Success"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -142,7 +142,7 @@
                     android:id="@+id/tvKode2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SMG"
+                    android:text="DEPARTURE"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -151,7 +151,7 @@
                     android:id="@+id/tvTujuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Semarang"
+                    android:text="Success"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 

@@ -101,12 +101,85 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
-            <include
-                layout="@layout/partial_dashboard"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="42dp"
+                android:background="@drawable/login_button_bk"
+                android:src="@drawable/ic_about_foreground"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primaryTextColor"
+                android:layout_marginTop="8dp"
+                android:text="About"
+                app:layout_constraintEnd_toEndOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="@+id/imageButton"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="42dp"
+                android:background="@drawable/login_button_bk"
+                android:src="@drawable/ic_debit"
+                app:layout_constraintStart_toEndOf="@+id/imageButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/primaryTextColor"
+                android:text="Top-Up"
+                app:layout_constraintEnd_toEndOf="@+id/imageButton2"
+                app:layout_constraintStart_toStartOf="@+id/imageButton2"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="42dp"
+                android:background="@drawable/login_button_bk"
+                android:src="@drawable/ic_cart"
+                app:layout_constraintStart_toEndOf="@+id/imageButton2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Cart"
+                android:textColor="@color/primaryTextColor"
+                app:layout_constraintEnd_toEndOf="@+id/imageButton3"
+                app:layout_constraintStart_toStartOf="@+id/imageButton3"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="42dp"
+                android:background="@drawable/login_button_bk"
+                android:src="@drawable/ic_notification"
+                app:layout_constraintStart_toEndOf="@+id/imageButton3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Notif"
+                android:textColor="@color/primaryTextColor"
+                app:layout_constraintEnd_toEndOf="@+id/imageButton4"
+                app:layout_constraintStart_toStartOf="@+id/imageButton4"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -124,10 +197,10 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton"
+                android:id="@+id/SearchButton"
                 android:layout_width="186dp"
                 android:layout_height="40dp"
-                android:layout_marginBottom="36dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/login_button_bk"
                 android:text="Search"
                 android:textColor="@color/white"
@@ -136,37 +209,42 @@
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/ArrivalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="AIRPORT NAME"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/arrivaledit"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutspinner"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:hint="Surabya (SBy)"
-                android:textAlignment="center"
-                android:textColor="@color/primaryTextColor"
-                android:textColorHint="@color/primaryTextColor"
-                android:textSize="14dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="108dp"
+                android:background="@drawable/login_button_bk"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ArrivalText" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.513">
+
+                <Spinner
+                    android:id="@+id/airport"
+                    android:layout_width="248dp"
+                    android:layout_height="40dp"
+                    android:outlineAmbientShadowColor="@color/black"
+                    android:outlineSpotShadowColor="@color/black"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.461"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.974" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/dateArrival"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="88dp"
+                android:layout_marginTop="96dp"
                 android:text="Arrival Date"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -178,7 +256,7 @@
                 android:id="@+id/dateArEdit"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="108dp"
+                android:layout_marginTop="116dp"
                 android:text="11-12-2022"
                 android:textColor="@color/primaryTextColor"
                 android:textColorHint="@color/primaryTextColor"
@@ -192,7 +270,7 @@
                 android:id="@+id/dateDeparture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="88dp"
+                android:layout_marginTop="96dp"
                 android:text="Departure Date"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -200,18 +278,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+            <TextView
+                android:id="@+id/AirportTittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Airport Name"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/dateDepEdit"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="108dp"
+                android:layout_marginTop="116dp"
                 android:text="11-12-2022"
                 android:textAlignment="textEnd"
                 android:textColor="@color/primaryTextColor"
                 android:textColorHint="@color/primaryTextColor"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.927"
+                app:layout_constraintHorizontal_bias="0.931"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -229,8 +319,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
             app:layout_constraintVertical_bias="0.3">
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

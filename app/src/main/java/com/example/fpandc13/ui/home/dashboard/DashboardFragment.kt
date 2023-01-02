@@ -1,26 +1,63 @@
 package com.example.fpandc13.ui.home.dashboard
 
 
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.ViewGroup
-
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.fpandc13.R
-
+import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
+import com.example.fpandc13.data.network.models.ticket.search.SearchTicketRequestBody
 import com.example.fpandc13.databinding.FragmentDashboardBinding
 import com.example.fpandc13.ui.home.DatePickerFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
+class DashboardFragment: Fragment(R.layout.fragment_dashboard) , AdapterView.OnItemSelectedListener {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
+
+    var spinner: Spinner? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        val v: View = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        val spinner = v.findViewById<View>(R.id.airport) as Spinner
+        val adapter = ArrayAdapter(
+            this.requireActivity()!!, android.R.layout.simple_spinner_dropdown_item, bandara
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        return v
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDashboardBinding.bind(view)
+
+
+//        spinner = this.spinner
+//        spinner!!.setOnItemSelectedListener(this)
+
+        // Create an ArrayAdapter using a simple spinner layout and languages array
+//        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, bandara)
+//        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, bandara)
+        // Set layout to use when the list of choices appear
+//        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        // Set Adapter to Spinner
+//        spinner!!.setAdapter(aa)
 
         binding.apply {
             dateArEdit.setOnClickListener {
@@ -45,6 +82,17 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
         }
 
 
+
+        binding.SearchButton.setOnClickListener {
+            val airportName: String = binding.airport.getSelectedItem().toString()
+            val Departure: String = binding.dateDepEdit.getText().toString()
+            val Arrival: String = binding.dateDeparture.getText().toString()
+
+            val searchTickets =
+                parseFormIntoEntity(airportName, Departure,Arrival)
+            navigateToSearchResult(searchTickets)
+        }
+
         binding.apply {
             dateDepEdit.setOnClickListener {
                 // create new instance of DatePickerFragment
@@ -68,8 +116,64 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
         }
     }
 
+    override fun onItemSelected(arg0: AdapterView<*>, arg1: View, position: Int, id: Long) {
+
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun parseFormIntoEntity(
+        airport : String,
+        arrival_date: String,
+        departure_date: String
+
+        ): SearchTicketRequestBody {
+        return SearchTicketRequestBody(
+            airportName = airport,
+            arrivalDate = binding.dateArEdit.text.toString(),
+            departureDate = binding.dateDepEdit.text.toString()
+        )
+    }
+
+    private fun navigateToSearchResult(searchTickets: SearchTicketRequestBody) {
+        val action = DashboardFragmentDirections.actionFirstFragmentToHiltSearchResultFragment(searchTickets)
+        Log.d("args", searchTickets.toString())
+        findNavController().navigate(action)
+    }
+
+    var bandara = arrayOf(
+        "Choose an Airport",
+        "Pattimura International Airport",
+        "Raja Haji Fisabilillah International Airport",
+        "Radin Inten II International Airport",
+        "Halim Perdana Kusuma International Airport",
+        "Minangkabau International Airport",
+        "Sultan Mahmud Badaruddin II International Airport",
+        "Abdul Rachman Saleh International Airport",
+        "Blimbingsari International Airport",
+        "Juwata International Airport",
+        "Sentani International Airport",
+        "Polonia International Airport",
+        "El Tari International Airport",
+        "Supadio International Airport",
+        "Sultan Mahmud Badaruddin II International Airport",
+        "Syamsudin Noor International Airport",
+        "Pattimura International Airport",
+        "Sultan Iskandar Muda International Airport",
+        "Raja Haji Fisabilillah International Airport",
+        "Lombok International Airport",
+        "Halim Perdana Kusuma International Airport",
+        "Hang Nadim International Airport",
+        "Juanda International Airport",
+        "Soekarno Hatta International Airport"
+    )
+
+
 }

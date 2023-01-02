@@ -55,9 +55,9 @@ class DataPassengerViewModel @Inject constructor(
             }
         }
     }
-    fun postPassengers(createPassengerRequestBody: CreatePassengerRequestBody) {
+    fun postPassengers(accessToken: String, createPassengerRequestBody: CreatePassengerRequestBody) {
         viewModelScope.launch(Dispatchers.IO) {
-            val Response = passanggerRepository.createPassenger(createPassengerRequestBody)
+            val Response = passanggerRepository.createPassenger(accessToken, createPassengerRequestBody)
             viewModelScope.launch(Dispatchers.Main) {
                 _PassengerResponse.postValue(Response)
             }

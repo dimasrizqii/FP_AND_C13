@@ -3,6 +3,8 @@ package com.example.fpandc13.data.repository
 import com.example.fpandc13.data.network.datasource.BookingRemoteDataSource
 import com.example.fpandc13.data.network.models.booking.create.CreateBookingRequestBody
 import com.example.fpandc13.data.network.models.booking.create.CreateBookingResponse
+import com.example.fpandc13.data.network.models.booking.history.HistoryBookingResponse
+import com.example.fpandc13.data.network.models.booking.historyUser.BookingResponse
 import com.example.fpandc13.data.network.models.booking.list.ListBookingResponse
 import com.example.fpandc13.data.network.models.booking.listperuser.ListPerUserBookingResponse
 import com.example.fpandc13.wrapper.Resource
@@ -11,7 +13,7 @@ import javax.inject.Inject
 interface BookingRepository {
     suspend fun createBooking(token : String , createBookingRequestBody: CreateBookingRequestBody): Resource<CreateBookingResponse>
     suspend fun listBooking(): Resource<ListBookingResponse>
-    suspend fun listPerUserBooking(): Resource<ListPerUserBookingResponse>
+    suspend fun listPerUserBooking(token : String): Resource<BookingResponse>
 }
 
 class BookingRepositoryImpl @Inject constructor(private val dataSource: BookingRemoteDataSource) :
@@ -29,9 +31,9 @@ class BookingRepositoryImpl @Inject constructor(private val dataSource: BookingR
         }
     }
 
-    override suspend fun listPerUserBooking(): Resource<ListPerUserBookingResponse> {
+    override suspend fun listPerUserBooking(token : String): Resource<BookingResponse> {
         return proceed {
-            dataSource.listPerUserBooking()
+            dataSource.listPerUserBooking(token)
         }
     }
 

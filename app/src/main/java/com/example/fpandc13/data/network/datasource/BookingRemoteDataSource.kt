@@ -2,6 +2,8 @@ package com.example.fpandc13.data.network.datasource
 
 import com.example.fpandc13.data.network.models.booking.create.CreateBookingRequestBody
 import com.example.fpandc13.data.network.models.booking.create.CreateBookingResponse
+import com.example.fpandc13.data.network.models.booking.history.HistoryBookingResponse
+import com.example.fpandc13.data.network.models.booking.historyUser.BookingResponse
 import com.example.fpandc13.data.network.models.booking.list.ListBookingResponse
 import com.example.fpandc13.data.network.models.booking.listperuser.ListPerUserBookingResponse
 import com.example.fpandc13.data.network.service.booking.AeroplaneBookingApiInterface
@@ -10,7 +12,7 @@ import javax.inject.Inject
 interface BookingRemoteDataSource {
     suspend fun createBooking(token : String, createBookingRequestBody: CreateBookingRequestBody): CreateBookingResponse
     suspend fun listBooking(): ListBookingResponse
-    suspend fun listPerUserBooking(): ListPerUserBookingResponse
+    suspend fun listPerUserBooking(token : String): BookingResponse
 }
 
 class BookingRemoteDataSourceImpl @Inject constructor(private val apiService: AeroplaneBookingApiInterface) :
@@ -23,8 +25,8 @@ class BookingRemoteDataSourceImpl @Inject constructor(private val apiService: Ae
         return apiService.listBooking()
     }
 
-    override suspend fun listPerUserBooking(): ListPerUserBookingResponse {
-        return apiService.listPerUserBooking()
+    override suspend fun listPerUserBooking(token : String): BookingResponse {
+        return apiService.listPerUserBooking(token)
     }
 
 }

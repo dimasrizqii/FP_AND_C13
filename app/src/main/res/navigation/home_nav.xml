@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_firstFragment_to_ticketFragment"
             app:destination="@id/ticketFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_hilt_SearchResultFragment"
+            app:destination="@id/hilt_SearchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/historyFragment"
@@ -27,6 +30,12 @@
         <action
             android:id="@+id/action_historyFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <argument
+            android:name="DataBooking"
+            app:argType="com.example.fpandc13.data.network.models.booking.history.Booking" />
+        <action
+            android:id="@+id/action_historyFragment_to_hilt_TicketDetailFragment2"
+            app:destination="@id/hilt_TicketDetailFragment2" />
     </fragment>
     <fragment
         android:id="@+id/ticketFragment"
@@ -78,4 +87,16 @@
         android:name="com.example.fpandc13.ui.home.payment.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/hilt_TicketDetailFragment2"
+        android:name="com.example.fpandc13.ui.home.ticketdetail.Hilt_TicketDetailFragment"
+        android:label="Hilt_TicketDetailFragment" />
+    <fragment
+        android:id="@+id/hilt_SearchResultFragment"
+        android:name="com.example.fpandc13.ui.home.search.Hilt_SearchResultFragment"
+        android:label="Hilt_SearchResultFragment" >
+        <argument
+            android:name="DataSearchTicket"
+            app:argType="com.example.fpandc13.data.network.models.ticket.search.SearchTicketRequestBody" />
+    </fragment>
 </navigation>

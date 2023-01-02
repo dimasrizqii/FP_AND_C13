@@ -8,7 +8,7 @@ import com.example.fpandc13.wrapper.Resource
 import javax.inject.Inject
 
 interface PassengerRepository {
-    suspend fun createPassenger(createPassengerRequestBody: CreatePassengerRequestBody): Resource<CreatePassengerResponse>
+    suspend fun createPassenger(token : String ,createPassengerRequestBody: CreatePassengerRequestBody): Resource<CreatePassengerResponse>
     suspend fun Passenger(id : Int): Resource<PassengerResponse>
 }
 
@@ -25,9 +25,9 @@ class PassengerRepositoryImpl @Inject constructor(private val dataSource: Passen
         }
     }
 
-    override suspend fun createPassenger(createPassengerRequestBody: CreatePassengerRequestBody): Resource<CreatePassengerResponse> {
+    override suspend fun createPassenger(token : String ,createPassengerRequestBody: CreatePassengerRequestBody): Resource<CreatePassengerResponse> {
         return proceed {
-            dataSource.createPassenger(createPassengerRequestBody)
+            dataSource.createPassenger(token , createPassengerRequestBody)
         }
     }
 

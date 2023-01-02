@@ -40,7 +40,7 @@ class PaymentFragment : Fragment() {
 
         binding.btnBook.setOnClickListener(){
             navigateHome()
-            Toast.makeText(requireContext(), "Transaksi Berhasil", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Tagihan Telah Diabayar", Toast.LENGTH_LONG).show()
         }
 
     }
