@@ -19,7 +19,7 @@ import com.example.fpandc13.ui.home.DatePickerFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DashboardFragment: Fragment(R.layout.fragment_dashboard) , AdapterView.OnItemSelectedListener {
+class DashboardFragment: Fragment(R.layout.fragment_dashboard) {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
@@ -87,9 +87,12 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) , AdapterView.OnI
             val airportName: String = binding.airport.getSelectedItem().toString()
             val Departure: String = binding.dateDepEdit.getText().toString()
             val Arrival: String = binding.dateDeparture.getText().toString()
+            val price: Int = 0
+            val kelas : String = ""
+            val airportloc : String = ""
 
             val searchTickets =
-                parseFormIntoEntity(airportName, Departure,Arrival)
+                parseFormIntoEntity(airportName,airportloc,Departure,Arrival,price, kelas)
             navigateToSearchResult(searchTickets)
         }
 
@@ -116,13 +119,6 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) , AdapterView.OnI
         }
     }
 
-    override fun onItemSelected(arg0: AdapterView<*>, arg1: View, position: Int, id: Long) {
-
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("Not yet implemented")
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -131,14 +127,23 @@ class DashboardFragment: Fragment(R.layout.fragment_dashboard) , AdapterView.OnI
 
     private fun parseFormIntoEntity(
         airport : String,
+        airportloc : String,
+        departure_date: String,
         arrival_date: String,
-        departure_date: String
+        price : Int,
+        kelas : String
+
 
         ): SearchTicketRequestBody {
         return SearchTicketRequestBody(
-            airportName = airport,
-            arrivalDate = binding.dateArEdit.text.toString(),
-            departureDate = binding.dateDepEdit.text.toString()
+            airportloc,
+            airport,
+            arrival_date,
+            kelas,
+            departure_date,
+            price
+
+
         )
     }
 

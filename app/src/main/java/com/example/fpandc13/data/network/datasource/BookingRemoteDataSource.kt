@@ -6,13 +6,17 @@ import com.example.fpandc13.data.network.models.booking.history.HistoryBookingRe
 import com.example.fpandc13.data.network.models.booking.historyUser.BookingResponse
 import com.example.fpandc13.data.network.models.booking.list.ListBookingResponse
 import com.example.fpandc13.data.network.models.booking.listperuser.ListPerUserBookingResponse
+import com.example.fpandc13.data.network.models.ticket.list.detail.TicketDetailResponse
 import com.example.fpandc13.data.network.service.booking.AeroplaneBookingApiInterface
+import com.example.fpandc13.ui.home.history.BookingState
+import retrofit2.Call
 import javax.inject.Inject
 
 interface BookingRemoteDataSource {
     suspend fun createBooking(token : String, createBookingRequestBody: CreateBookingRequestBody): CreateBookingResponse
     suspend fun listBooking(): ListBookingResponse
-    suspend fun listPerUserBooking(token : String): BookingResponse
+    suspend fun listPerUserBooking(token : String): Call<BookingResponse>
+
 }
 
 class BookingRemoteDataSourceImpl @Inject constructor(private val apiService: AeroplaneBookingApiInterface) :
@@ -25,8 +29,8 @@ class BookingRemoteDataSourceImpl @Inject constructor(private val apiService: Ae
         return apiService.listBooking()
     }
 
-    override suspend fun listPerUserBooking(token : String): BookingResponse {
-        return apiService.listPerUserBooking(token)
+    override suspend fun listPerUserBooking(token : String): Call<BookingResponse> {
+        return apiService.getBookingUser(token)
     }
 
 }

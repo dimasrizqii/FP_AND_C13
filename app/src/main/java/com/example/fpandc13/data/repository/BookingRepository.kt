@@ -8,12 +8,13 @@ import com.example.fpandc13.data.network.models.booking.historyUser.BookingRespo
 import com.example.fpandc13.data.network.models.booking.list.ListBookingResponse
 import com.example.fpandc13.data.network.models.booking.listperuser.ListPerUserBookingResponse
 import com.example.fpandc13.wrapper.Resource
+import retrofit2.Call
 import javax.inject.Inject
 
 interface BookingRepository {
     suspend fun createBooking(token : String , createBookingRequestBody: CreateBookingRequestBody): Resource<CreateBookingResponse>
     suspend fun listBooking(): Resource<ListBookingResponse>
-    suspend fun listPerUserBooking(token : String): Resource<BookingResponse>
+    suspend fun listPerUserBooking(token : String): Resource<Call<BookingResponse>>
 }
 
 class BookingRepositoryImpl @Inject constructor(private val dataSource: BookingRemoteDataSource) :
@@ -31,7 +32,7 @@ class BookingRepositoryImpl @Inject constructor(private val dataSource: BookingR
         }
     }
 
-    override suspend fun listPerUserBooking(token : String): Resource<BookingResponse> {
+    override suspend fun listPerUserBooking(token : String): Resource<Call<BookingResponse>> {
         return proceed {
             dataSource.listPerUserBooking(token)
         }

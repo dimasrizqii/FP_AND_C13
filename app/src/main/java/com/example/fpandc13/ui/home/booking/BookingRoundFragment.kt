@@ -1,25 +1,31 @@
 package com.example.fpandc13.ui.home.booking
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fpandc13.R
+import com.example.fpandc13.adapter.TicketAdapter
 import com.example.fpandc13.data.network.models.booking.create.CreateBookingRequestBody
 import com.example.fpandc13.data.network.models.passenger.create.CreatePassengerRequestBody
+import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
 import com.example.fpandc13.databinding.FragmentBookingRoundBinding
 import com.example.fpandc13.ui.home.datapassenger.DataPassengerViewModel
 import com.example.fpandc13.ui.home.profile.ProfileViewModel
+import com.example.fpandc13.ui.home.ticket.TicketFragmentDirections
 import com.example.fpandc13.ui.login.LoginViewModel
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import org.w3c.dom.Text
 
 @AndroidEntryPoint
 class BookingRoundFragment : Fragment() {
@@ -30,9 +36,9 @@ class BookingRoundFragment : Fragment() {
 
     private val DataViewModel: DataPassengerViewModel by viewModels()
     private val userViewModel : ProfileViewModel by viewModels()
+    private val viewModel : BookingViewModel by viewModels()
     private val authViewModel : LoginViewModel by viewModels()
     private val args: BookingRoundFragmentArgs by navArgs()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +60,28 @@ class BookingRoundFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val bandara : TextView = binding.Departureedit
+        val timeAriv : TextView = binding.dateRetEdit
+        val timeDep : TextView = binding.dateDepEdit
+        val tanggal : TextView = binding.arrivalEdit
+        val harga : TextView = binding.harga
+        val kelas : TextView = binding.tvKelas
+        val args = this.arguments
+        val inputBandara = args?.get("dataBandara")
+        val inputDatang = args?.get("dataDatang")
+        val inputBerangkat = args?.get("dataBerangkat")
+        val inputTanggal = args?.get("dataTanggal")
+        val inputharga = args?.get("dataBandara")
+        val inputKelas = args?.get("dataKelas")
+        bandara.text = inputBandara.toString()
+        timeAriv.text = inputDatang.toString()
+        timeDep.text = inputBerangkat.toString()
+        tanggal.text = inputTanggal.toString()
+        harga.text = inputharga.toString()
+        kelas.text = inputKelas.toString()
+
         observeQueryResult()
         binding.btnSearch.setOnClickListener { CreateBooking() }
 
@@ -115,13 +143,26 @@ class BookingRoundFragment : Fragment() {
         }
         DataViewModel.getDataStoreTicket().observe(viewLifecycleOwner) {
             binding.textIdTicket.text = "$it"
-
         }
         DataViewModel.getDataStorePassenger().observe(viewLifecycleOwner) {
             binding.textIdPassenger.text = "$it"
         }
 
       }
+
+    private fun initView() {
+        binding.apply {
+            args.dataTicket.apply {
+
+                Departureedit.text = airport?.airportName
+                dateRetEdit.text = arrivalDate
+                dateDepEdit.text = departureDate
+                harga.text = "Rp."+price.toString()
+                tvKelas.text = classX
+
+            }
+        }
+    }
 
     fun CreateBooking() {
         binding.apply {
@@ -146,6 +187,8 @@ class BookingRoundFragment : Fragment() {
     private fun parseFormIntoEntity(idPass: Int,idTicket: Int, idUser: Int, total : Int): CreateBookingRequestBody {
         return CreateBookingRequestBody(idPass,idTicket,idUser,total)
     }
+
+
 }
 
 

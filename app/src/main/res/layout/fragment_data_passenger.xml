@@ -171,7 +171,7 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/arrow"
                         app:layout_constraintTop_toBottomOf="@+id/tvKelas"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintVertical_bias="0.0"/>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/dateDepEdit"

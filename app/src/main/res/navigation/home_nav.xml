@@ -54,12 +54,12 @@
         android:name="com.example.fpandc13.ui.home.datapassenger.DataPassengerFragment"
         android:label="fragment_data_passenger"
         tools:layout="@layout/fragment_data_passenger" >
-        <argument
-            android:name="TicketData"
-            app:argType="com.example.fpandc13.data.network.models.ticket.list.detail.Ticket" />
         <action
             android:id="@+id/action_dataPassengerFragment_to_bookingRoundFragment"
             app:destination="@id/bookingRoundFragment" />
+        <argument
+            android:name="TicketData"
+            app:argType="com.example.fpandc13.data.network.models.ticket.list.detail.Ticket" />
     </fragment>
     <fragment
         android:id="@+id/bookingRoundFragment"
@@ -98,5 +98,8 @@
         <argument
             android:name="DataSearchTicket"
             app:argType="com.example.fpandc13.data.network.models.ticket.search.SearchTicketRequestBody" />
+        <action
+            android:id="@+id/action_hilt_SearchResultFragment_to_dataPassengerFragment"
+            app:destination="@id/dataPassengerFragment" />
     </fragment>
 </navigation>

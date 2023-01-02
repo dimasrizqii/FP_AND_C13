@@ -1,7 +1,10 @@
 package com.example.fpandc13.ui.home.booking
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fpandc13.data.local.preference.UserDataStoreManager
+import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
 import com.example.fpandc13.data.network.service.ticket.AeroplaneTicketApiInterface
 import com.example.fpandc13.data.repository.BookingRepository
 import com.example.fpandc13.data.repository.PassengerRepository
@@ -17,5 +20,8 @@ class BookingViewModel @Inject constructor(
     private val passanggerRepository: PassengerRepository,
 
 ): ViewModel() {
+
+    private val _ticket = MutableLiveData<List<Ticket>>()
+    val LiveDataTicket: LiveData<List<Ticket>> = _ticket
 
 }

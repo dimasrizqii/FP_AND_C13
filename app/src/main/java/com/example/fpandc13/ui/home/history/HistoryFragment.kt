@@ -47,7 +47,8 @@ class HistoryFragment : Fragment() {
 
         GetProfile()
         initList()
-//        observeQueryResult()
+        observeQueryResult()
+
     }
 
     private fun initList() {
@@ -62,7 +63,6 @@ class HistoryFragment : Fragment() {
         authViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
             viewModel.GetHistoryUser("Bearer $it")
         }
-
         viewModel.LiveDataBooking.observe(viewLifecycleOwner) { result ->
             showTicketList(result)
             Log.d(ContentValues.TAG, "Fragment -> ${result}")
@@ -73,9 +73,13 @@ class HistoryFragment : Fragment() {
         }
     }
 
-//    private fun observeQueryResult(){
-//
-//    }
+
+
+    private fun observeQueryResult(){
+        viewModel.HistoryResponse.observe(viewLifecycleOwner) { result ->
+            showTicketList(result)
+        }
+    }
 
 
     private fun showTicketList(booking: List<Booking>) {

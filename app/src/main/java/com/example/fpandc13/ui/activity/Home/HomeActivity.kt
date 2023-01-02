@@ -17,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.fpandc13.R
 import com.example.fpandc13.databinding.ActivityHomeBinding
+import com.example.fpandc13.ui.home.datapassenger.DataPassengerFragment
 import com.example.fpandc13.ui.home.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,6 +37,7 @@ class HomeActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setupNavigation()
 
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
 
@@ -44,6 +46,17 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+//    fun setSelectedItem(pos:Int){
+//        binding.bottomBar.setSelectedItem(pos)
+//    }
+//    //set badge indicator
+//    fun setBadge(pos:Int){
+//        binding.bottomBar.setBadge(pos)
+//    }
+//    //remove badge indicator
+//    fun removeBadge(pos:Int){
+//        binding.bottomBar.removeBadge(pos)
+//    }
 
 
     private fun hideBottomNav(hide: Boolean) {

@@ -10,6 +10,7 @@ import com.example.fpandc13.data.network.models.booking.historyUser.BookingRespo
 import com.example.fpandc13.data.network.models.ticket.list.detail.Ticket
 import com.example.fpandc13.data.network.models.ticket.list.detail.TicketDetailResponse
 import com.example.fpandc13.data.network.service.booking.AeroplaneBookingApiInterface
+import com.example.fpandc13.data.repository.BookingRepository
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -21,13 +22,13 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class HistoryViewModel @Inject constructor(private val ApiHelper: AeroplaneBookingApiInterface) : ViewModel()  {
+class HistoryViewModel @Inject constructor(private val ApiHelper: AeroplaneBookingApiInterface , private val bookingReposiroty : BookingRepository) : ViewModel()  {
 
     private val _HistoryBooking: MutableLiveData<BookingResponse> = MutableLiveData()
     val BookingHistory: LiveData<BookingResponse> get() = _HistoryBooking
 
-    private var _HistoryResponse = MutableLiveData<Resource<BookingResponse>>()
-    val HistoryResponse: LiveData<Resource<BookingResponse>> get() = _HistoryResponse
+    private var _HistoryResponse = MutableLiveData<List<Booking>>()
+    val HistoryResponse: LiveData<List<Booking>> get() = _HistoryResponse
 
     private val _booking = MutableLiveData<List<Booking>>()
     val LiveDataBooking: LiveData<List<Booking>> = _booking
@@ -36,14 +37,32 @@ class HistoryViewModel @Inject constructor(private val ApiHelper: AeroplaneBooki
 
 
 
-    fun GetHistoryUser(token : String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val HistoryUserGet = ApiHelper.listPerUserBooking(token)
-            viewModelScope.launch(Dispatchers.Main) {
-                _HistoryBooking.postValue(HistoryUserGet)
+    fun GetHistoryUser(token : String){
+        ApiHelper.getHistoryBooking(token).enqueue(object : Callback<BookingResponse> {
+            override fun onResponse(
+                call: Call<BookingResponse>,
+                response: Response<BookingResponse>
+            ) {
+                if (response.isSuccessful) {
+                    _HistoryResponse.postValue(response.body()!!.bookings as List<Booking>?)
+                }
             }
-        }
+            override fun onFailure(call: Call<BookingResponse>, t: Throwable) {
+                Log.e("Error : ", "onFailure: ${t.message}")
+            }
+        })
     }
+}
+
+
+//    fun GetHistoryUser(token : String) {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val HistoryUserGet = bookingReposiroty.listPerUserBooking(token)
+//            viewModelScope.launch(Dispatchers.Main) {
+//                _HistoryBooking.postValue(HistoryUserGet)
+//            }
+//        }
+//    }
 
 //     fun getHistory(token: String){
 //        ApiHelper.listPerUserBooking(token).enqueue(object : Callback<BookingResponse> {
@@ -60,7 +79,7 @@ class HistoryViewModel @Inject constructor(private val ApiHelper: AeroplaneBooki
 //            }
 //        })
 //    }
-}
+
 
 
 

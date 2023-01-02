@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 interface TicketRemoteDataSource {
     suspend fun listTicket(): Call<TicketDetailResponse>
-    suspend fun searchTicket(searchTicketRequestBody: SearchTicketRequestBody): SearchTicketResponse
+    suspend fun searchTicket(token : String,airport : String,airportlocation : String,departure : String,arrival : String,price: Int,kelas : String): SearchTicketResponse
     suspend fun getTicket(id: Int?): TicketDetailResponse
 }
 
@@ -22,8 +22,16 @@ class TicketRemoteDataSourceImpl @Inject constructor(private val apiService: Aer
         return apiService.listTicket()
     }
 
-    override suspend fun searchTicket(searchTicketRequestBody: SearchTicketRequestBody): SearchTicketResponse {
-        return apiService.searchTicket(searchTicketRequestBody)
+    override suspend fun searchTicket(
+        token: String,
+        airport: String,
+        airportlocation: String,
+        departure: String,
+        arrival: String,
+        price: Int,
+        kelas: String
+    ): SearchTicketResponse {
+        return apiService.searchTicket(token,airport,airportlocation,departure,arrival, price, kelas)
     }
 
     override suspend fun getTicket(id: Int?): TicketDetailResponse {

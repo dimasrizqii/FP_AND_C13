@@ -7,9 +7,7 @@ import com.example.fpandc13.data.network.models.ticket.list.detail.TicketDetailR
 import com.example.fpandc13.data.network.models.ticket.search.SearchTicketRequestBody
 import com.example.fpandc13.data.network.models.ticket.search.SearchTicketResponse
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AeroplaneTicketApiInterface {
     @GET("api/tickets")
@@ -20,7 +18,14 @@ interface AeroplaneTicketApiInterface {
 
     @GET("api/tickets/search")
      fun searchTicket(
-        @Body searchTicketRequestBody: SearchTicketRequestBody
+        @Header("Authorization") token: String,
+        @Query("airport") airport: String = "",
+        @Query("airportloc") airportLoc: String= "",
+        @Query("departure") departure: String= "",
+        @Query("arrival") arrival: String= "",
+        @Query("price") price: Int =0,
+        @Query("class") kelas: String = ""
+
     ): SearchTicketResponse
 
     @GET("api/tickets/{id}")

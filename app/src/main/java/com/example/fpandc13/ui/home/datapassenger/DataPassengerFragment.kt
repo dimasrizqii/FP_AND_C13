@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
@@ -21,10 +24,12 @@ import com.example.fpandc13.data.network.models.passenger.create.CreatePassenger
 import com.example.fpandc13.databinding.ActivityHomeBinding
 import com.example.fpandc13.databinding.FragmentDataPassengerBinding
 import com.example.fpandc13.databinding.FragmentTicketBinding
+import com.example.fpandc13.ui.home.booking.BookingRoundFragment
 import com.example.fpandc13.ui.home.profile.ProfileViewModel
 import com.example.fpandc13.ui.login.LoginViewModel
 import com.example.fpandc13.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import org.w3c.dom.Text
 
 
 @AndroidEntryPoint
@@ -51,6 +56,9 @@ class DataPassengerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
         // Inflate the layout for this fragment
         _bindingFrag = FragmentDataPassengerBinding.inflate(inflater, container, false)
         return binding.root
@@ -58,6 +66,26 @@ class DataPassengerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val button : Button = binding.btnCheckout
+        button.setOnClickListener(){
+            val bandara : TextView = binding.bandara
+            val harga : TextView = binding.harga
+            val ariv : TextView = binding.timeAriv
+            val dep : TextView = binding.timeDep
+            val tanggal : TextView = binding.dateDepEdit
+            val kelas : TextView = binding.tvKelas
+            val bundle = Bundle()
+            bundle.putString("dataBandara",bandara.toString())
+            bundle.putString("dataHarga",harga.toString())
+            bundle.putString("dataDatang",ariv.toString())
+            bundle.putString("dataBerangkat",dep.toString())
+            bundle.putString("dataTanggal",tanggal.toString())
+            bundle.putString("dataKelas",kelas.toString())
+            val fragment = BookingRoundFragment()
+            fragment.arguments = bundle
+            fragmentManager?.beginTransaction()?.replace(R.id.main_fragment,fragment)?.commit()
+        }
 
 
         observeQueryResult()
